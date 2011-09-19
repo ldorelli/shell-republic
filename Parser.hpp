@@ -14,6 +14,7 @@ class Parser {
 public:
     Parser();
     CommandLine* readCommandLine();
+    bool newLine();
 };
 
 #endif
