@@ -13,7 +13,7 @@ class Parser {
     
 public:
     Parser();
-    CommandLine readCommandLine();
+    CommandLine* readCommandLine();
 };
 
 #endif

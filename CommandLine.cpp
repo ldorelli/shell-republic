@@ -12,13 +12,6 @@ Command* CommandLine::next() {
     } return *(iterator++);
 }
 
-CommandLine& CommandLine::operator= (CommandLine& commandLine) {
-    pipeline = commandLine.pipeline;
-    background = commandLine.background;
-    iterator = this->pipeline->begin();
-    return *this;
-}
-
 CommandLine::~CommandLine() {
     delete pipeline;
 }

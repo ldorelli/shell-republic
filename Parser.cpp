@@ -24,7 +24,7 @@ std::string Parser::nextWord() {
     return word;
 }
 
-CommandLine Parser::readCommandLine () {
+CommandLine* Parser::readCommandLine () {
     if (index == line.size()) line.clear();
     if (line.empty()) {
         index = 0;
@@ -53,8 +53,7 @@ CommandLine Parser::readCommandLine () {
             outAppend = false;
         } else if (word == "&") {
             commands->push_back(new Command(parameters, in, out, err, outAppend, errAppend));
-            CommandLine c(commands, true);
-            return c;
+            return new CommandLine(commands, true);
         } else if (word == "&>") {
             out = err = nextWord();
         } else if (word == "1>" || word == ">") {
@@ -71,8 +70,7 @@ CommandLine Parser::readCommandLine () {
             in = nextWord();
         } else if (word == "") {
             commands->push_back(new Command(parameters, in, out, err, outAppend, errAppend));
-            CommandLine c(commands, false);
-            return c;
+            return new CommandLine(commands, false);
         } else {
             parameters.push_back(word);
         }
