@@ -5,17 +5,26 @@
 #include <vector>
 
 class Command {
-    char ** execvector;
+    const char ** execvector;
     std::vector<std::string> parameters;
+    bool errAppend;
+    bool outAppend;
     std::string err;
+    std::string out;
+    std::string in;
     
     Command& operator= (const Command&);
     
 public:
     Command(std::vector<std::string> & parameters,
-             std::string & err = std::string());
+            std::string in = std::string(),
+            std::string out = std::string(),
+            std::string err = std::string(),
+            bool outAppend = false,
+            bool errAppend = false
+            );
     ~Command ();
-    char ** getExecv();
+    const char ** getExecv();
 };
 
 #endif

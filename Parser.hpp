@@ -2,15 +2,18 @@
 #define __PARSER_HPP__
 
 #include <string>
-#include "CommandList.hpp"
+#include "CommandLine.hpp"
 
 
 class Parser {
     std::string line;
     unsigned index;
     
+    std::string nextWord();
+    
 public:
-    CommandList getCommandList();
+    Parser();
+    CommandLine readCommandLine();
 };
 
 #endif
