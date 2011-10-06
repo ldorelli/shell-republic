@@ -1,17 +1,22 @@
 #include "Executor.hpp"
 #include <unistd.h>
+#include <fcntl.h>
+#include <cstdio>
+#include <sys/stat.h>
+#include <sys/types.h>
 
-std::list<Job> Executor::getJobs() {
+std::list<Executor::Job>& Executor::getJobs() {
     return jobs;
 }
 
-void Executor::run(Command* command, int& fdIn, int& fdOut, int& fdErr) {
-    const char ** execvector = command.getExecv();
+int Executor::run(Command* command, int fdIn, int fdOut, int fdErr) {
+    const char ** execvector = command->getExecv();
     Job job;
     if (!jobs.empty()) {
-        job.jobid = jobs.rbegin().jobid + 1;
+        job.jobid = jobs.rbegin()->jobid + 1;
     } else job.jobid = 1;
     job.name = execvector[0];
+    jobs.push_back(job);
     
     std::string in, out, err;
     bool outap, errap;
@@ -22,21 +27,61 @@ void Executor::run(Command* command, int& fdIn, int& fdOut, int& fdErr) {
     errap = command->getErrAppend();
     
     if (!in.empty()) {
-        //pipezar
+        if (fdIn != 0)
+            close(fdIn);
+        fdIn = open(in.c_str(), O_RDONLY);
     }
     
     if (!out.empty()) {
-        //pipezar
+        if (fdOut != 1)
+            close(fdOut);
+        chmod(out.c_str, 777);
+        fdOut = open(out.c_str(), O_WRONLY | O_CREAT);
     }
     
     if (!err.empty()) {
-        //pipezar
+        if (fdErr != 2)
+            close(fdErr);
+        chmod(err.c_str, 777);
+        fdErr = open(err.c_str(), O_WRONLY | O_CREAT);
     }
     
+    int pid = fork();
     
+    if (pid == 0) {
+        dup2(fdIn, 0);
+        dup2(fdOut, 1);
+        dup2(fdErr, 2);
+        if (fdIn != 0)
+            close(fdIn);
+        if (fdOut != 1)
+            close(fdOut);
+        if (fdErr != 2)
+            close(fdErr);
+        execv(execvector[0], (char*const*) execvector);
+    }
+    
+    return pid;
     
 }
 
-void Executor::run(CommandLine cmdLine) {
+void Executor::run(CommandLine* cmdLine) {
+    int fdIn = 0;
+    int fdOut = 1;
+    int fdErr = 2;
+    int pp[2];
+    int last;
     
+    Command * command;
+    while (command = cmdLine->next()) {
+        if (cmdLine->hasNext())
+            pipe(pp);
+        fdOut = pp[1];
+        last = run(command, fdIn, fdOut, fdErr);
+        fdIn = pp[0];
+    }
+    
+    if (cmdLine->isBackground()) {
+        waitpid(last, 0, 0);
+    }
 }

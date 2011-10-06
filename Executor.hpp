@@ -19,10 +19,10 @@ public:
 
 private:
     std::list<Job> jobs;
-    void run(Command* command, int& fdIn = 0, int& fdOut = 1, int& fdErr = 2);
+    int run(Command* command, int fdIn = 0, int fdOut = 1, int fdErr = 2);
 public:
-    void run(CommandLine commandLine);
-    std::vector<Job> & getJobs();
+    void run(CommandLine* commandLine);
+    std::list<Job> & getJobs();
 };
 
 #endif

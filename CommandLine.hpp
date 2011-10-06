@@ -14,7 +14,9 @@ public:
     CommandLine& operator= (CommandLine&);
     CommandLine(std::list<Command*> * pipeline, bool background);
     ~CommandLine();
-    Command* next ();    
+    Command* next();    
+    bool hasNext();
+    bool isBackground();
 };
 
 #endif

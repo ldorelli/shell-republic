@@ -2,21 +2,16 @@
 #include "CommandLine.hpp"
 #include "Parser.hpp"
 #include "MyTypo.hpp"
+#include "Executor.hpp"
 
 int main (int argc, char *argv[]) {
     Parser parser;
+    Executor executor;
     std::string presentation("shell$ ");
     while (true) {
         if (parser.newLine()) std::cout << presentation;
         CommandLine *cl = parser.readCommandLine();
-        Command* cmd;
-        while (cmd = cl->next()) {
-            const char ** execvector;
-            execvector = cmd->getExecv();
-            for (int i = 0; execvector[i] != 0; i++) {
-                
-            }
-        }
+        executor.run(cl);
         delete cl;
     }
     return 0;
