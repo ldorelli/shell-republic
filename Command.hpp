@@ -24,6 +24,11 @@ public:
             bool errAppend = false
             );
     ~Command ();
+    std::string getIn();
+    std::string getOut();
+    std::string getErr();
+    bool getOutAppend();
+    bool getErrAppend();
     const char ** getExecv();
 };
 

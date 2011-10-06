@@ -29,3 +29,23 @@ const char** Command::getExecv() {
     }
     return execvector;
 }
+
+std::string Command::getIn() {
+    return in;
+}
+
+std::string Command::getOut() {
+    return out;
+}
+
+std::string Command::getErr() {
+    return err;
+}
+
+bool Command::getOutAppend() {
+    return outAppend;
+}
+
+bool Command::getErrAppend() {
+    return errAppend;
+}

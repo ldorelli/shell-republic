@@ -12,6 +12,14 @@ Command* CommandLine::next() {
     } return *(iterator++);
 }
 
+bool CommandLine::hasNext() {
+    return iterator != pipeline->end();
+}
+
 CommandLine::~CommandLine() {
     delete pipeline;
+}
+
+bool CommandLine::isBackground() {
+    return background;
 }
