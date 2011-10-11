@@ -1,0 +1,5 @@
+rm shell
+rm *.txt
+git add -A
+git commit -m 'Commit'
+git push
