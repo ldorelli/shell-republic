@@ -37,13 +37,13 @@ int Executor::run(Command* command, int fdIn, int fdOut, int fdErr) {
     if (!out.empty()) {
         if (fdOut != 1)
             close(fdOut);
-        fdOut = open(out.c_str(), O_WRONLY | O_CREAT, S_IRWXU | S_IRWXO | S_IRWXG);
+        fdOut = open(out.c_str(), O_WRONLY | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO);
     }
     
     if (!err.empty()) {
         if (fdErr != 2)
             close(fdErr);
-        fdErr = open(err.c_str(), O_WRONLY | O_CREAT, S_IRWXU | S_IRWXO | S_IRWXG);
+        fdErr = open(err.c_str(), O_WRONLY | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO);
     }
     
     int pid = fork();
@@ -58,9 +58,8 @@ int Executor::run(Command* command, int fdIn, int fdOut, int fdErr) {
             close(fdOut);
         if (fdErr != 2)
             close(fdErr);
-        execv(execvector[0], (char*const*) execvector);
+		if(execvp(execvector[0], (char*const*) execvector)==-1) exit(0);
     }
-    
     return pid;
     
 }
