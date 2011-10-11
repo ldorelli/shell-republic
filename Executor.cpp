@@ -6,6 +6,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <iostream>
+#include <cstdlib>
 
 std::list<Executor::Job>& Executor::getJobs() {
     return jobs;
@@ -52,14 +53,15 @@ int Executor::run(Command* command, int fdIn, int fdOut, int fdErr) {
         dup2(fdIn, 0);
         dup2(fdOut, 1);
         dup2(fdErr, 2);
-        if (fdIn != 0)
-            close(fdIn);
-        if (fdOut != 1)
-            close(fdOut);
+    	if (fdIn != 0)
+            close(fdIn); 
+	    if (fdOut != 1)
+            close(fdOut); 
         if (fdErr != 2)
             close(fdErr);
 		if(execvp(execvector[0], (char*const*) execvector)==-1) exit(0);
     }
+
     return pid;
     
 }
@@ -74,13 +76,13 @@ void Executor::run(CommandLine* cmdLine) {
     Command * command;
     while (command = cmdLine->next()) {
         if (cmdLine->hasNext())
-            pipe(pp);
+		 	pipe(pp);
         fdOut = pp[1];
         last = run(command, fdIn, fdOut, fdErr);
         fdIn = pp[0];
     }
-    
-    if (cmdLine->isBackground()) {
-        waitpid(last, 0, 0);
-    }
+
+    if (!cmdLine->isBackground()) {
+       waitpid(last, 0, 0);
+	}
 }
