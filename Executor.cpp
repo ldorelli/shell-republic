@@ -4,6 +4,8 @@
 #include <cstdio>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <sys/wait.h>
+#include <iostream>
 
 std::list<Executor::Job>& Executor::getJobs() {
     return jobs;
@@ -35,15 +37,13 @@ int Executor::run(Command* command, int fdIn, int fdOut, int fdErr) {
     if (!out.empty()) {
         if (fdOut != 1)
             close(fdOut);
-        chmod(out.c_str, 777);
-        fdOut = open(out.c_str(), O_WRONLY | O_CREAT);
+        fdOut = open(out.c_str(), O_WRONLY | O_CREAT, S_IRWXU | S_IRWXO | S_IRWXG);
     }
     
     if (!err.empty()) {
         if (fdErr != 2)
             close(fdErr);
-        chmod(err.c_str, 777);
-        fdErr = open(err.c_str(), O_WRONLY | O_CREAT);
+        fdErr = open(err.c_str(), O_WRONLY | O_CREAT, S_IRWXU | S_IRWXO | S_IRWXG);
     }
     
     int pid = fork();
