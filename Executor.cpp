@@ -80,7 +80,7 @@ void Executor::run(CommandLine* cmdLine) {
         fdIn = pp[0];
     }
     
-    if (cmdLine->isBackground()) {
+    if (!cmdLine->isBackground()) {
         waitpid(last, 0, 0);
     }
 }
