@@ -19,7 +19,7 @@ public:
 
 private:
     std::list<Job> jobs;
-    int run(Command* command, int fdIn = 0, int fdOut = 1, int fdErr = 2, int close1 = 0, int close2 = 0);
+    int run(Command* command, int fdIn = 0, int fdOut = 1, int fdErr = 2);
 public:
     void run(CommandLine* commandLine);
     std::list<Job> & getJobs();
