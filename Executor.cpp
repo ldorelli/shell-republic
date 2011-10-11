@@ -54,7 +54,7 @@ int Executor::run(Command* command, int fdIn, int fdOut, int fdErr) {
         dup2(fdOut, 1);
         dup2(fdErr, 2);
     	if (fdIn != 0)
-            close(fdIn); 
+		 	close(fdIn); 
 	    if (fdOut != 1)
             close(fdOut); 
         if (fdErr != 2)
@@ -75,11 +75,13 @@ void Executor::run(CommandLine* cmdLine) {
     
     Command * command;
     while (command = cmdLine->next()) {
-        if (cmdLine->hasNext())
+		if (cmdLine->hasNext()){
 		 	pipe(pp);
-        fdOut = pp[1];
+        	fdOut = pp[1];
+		}
         last = run(command, fdIn, fdOut, fdErr);
-        fdIn = pp[0];
+ 		if(cmdLine->hasNext()) fdIn = pp[0];
+		fdOut = 1;
     }
     
     if (!cmdLine->isBackground()) {
