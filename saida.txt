@@ -1,3 +1,4 @@
+a.out
 Command.cpp
 Command.hpp
 CommandLine.cpp
