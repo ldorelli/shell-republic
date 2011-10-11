@@ -1,3 +1,4 @@
 rm *.o
 g++ -c *.cpp
 g++ -g -o shell *.o
+rm *.o
