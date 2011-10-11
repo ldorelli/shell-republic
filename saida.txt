@@ -1,24 +1,18 @@
-a.out
-Command.cpp
-Command.hpp
-CommandLine.cpp
-CommandLine.hpp
-CommandLine.o
-Command.o
-compile
-Executor.cpp
-Executor.hpp
-Executor.o
-MyTypo.cpp
-MyTypo.hpp
-MyTypo.o
-out.txt
-Parser.cpp
-Parser.hpp
-Parser.o
-Program.cpp
-Program.hpp
-Program.o
-saida.txt
-shell
-test.txt
+total 288
+-rw-r--r--  1 denismr  staff   1035  6 Out 09:33 Command.cpp
+-rw-r--r--  1 denismr  staff    790  6 Out 09:33 Command.hpp
+-rw-r--r--  1 denismr  staff    499  6 Out 09:33 CommandLine.cpp
+-rw-r--r--  1 denismr  staff    458  6 Out 09:33 CommandLine.hpp
+-rw-r--r--  1 denismr  staff   2008 11 Out 07:49 Executor.cpp
+-rw-r--r--  1 denismr  staff    497  6 Out 09:33 Executor.hpp
+-rw-r--r--  1 denismr  staff   1425  6 Out 09:33 MyTypo.cpp
+-rw-r--r--  1 denismr  staff   1305  6 Out 09:33 MyTypo.hpp
+-rw-r--r--  1 denismr  staff   2521  6 Out 09:33 Parser.cpp
+-rw-r--r--  1 denismr  staff    278  6 Out 09:33 Parser.hpp
+-rw-r--r--  1 denismr  staff    430  6 Out 09:33 Program.cpp
+-rw-r--r--  1 denismr  staff      0  6 Out 09:33 Program.hpp
+-rwxr-xr-x  1 denismr  staff     40 11 Out 07:52 compile
+-rwxr-xr-x  1 denismr  staff    254 11 Out 07:48 out.txt
+-rwxr-xr-x  1 denismr  staff   1034 11 Out 07:54 saida.txt
+-rwxr-xr-x  1 denismr  staff  84732 11 Out 07:52 shell
+-rwxr-xr-x  1 denismr  staff      7  6 Out 09:44 test.txt
