@@ -6,7 +6,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <iostream>
-#include<cstdlib>
+
 std::list<Executor::Job>& Executor::getJobs() {
     return jobs;
 }
