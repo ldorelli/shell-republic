@@ -13,14 +13,14 @@ std::list<Executor::Job>& Executor::getJobs() {
     return jobs;
 }
 
-int Executor::run(Command* command, int fdIn, int fdOut, int fdErr){ 
+int Executor::run(Command* command, int & firstPipedPid, bool isBackground,
+                  int fdIn, int fdOut, int fdErr){ 
     const char ** execvector = command->getExecv();
     Job job;
     if (!jobs.empty()) {
         job.jobid = jobs.rbegin()->jobid + 1;
     } else job.jobid = 1;
     job.name = execvector[0];
-    jobs.push_back(job);
     
     std::string in, out, err;
     bool outap, errap;
@@ -55,9 +55,23 @@ int Executor::run(Command* command, int fdIn, int fdOut, int fdErr){
 			
     }
     
+    /* mutex aqui */
     int pid = fork();
     
     if (pid == 0) {
+        
+        if (!firstPipedPid) firstPipedPid = getpid();
+        setpgid(getpid(), firstPipedPid);
+        if (!isBackground)
+            tcsetpgrp(0, getpid());
+        
+        signal (SIGINT, SIG_DFL);
+        signal (SIGQUIT, SIG_DFL);
+        signal (SIGTSTP, SIG_DFL);
+        signal (SIGTTIN, SIG_DFL);
+        signal (SIGTTOU, SIG_DFL);
+        signal (SIGCHLD, SIG_DFL);
+        
 		if(fdIn != 0){
 			dup2(fdIn, 0);
 			close(fdIn);
@@ -74,6 +88,14 @@ int Executor::run(Command* command, int fdIn, int fdOut, int fdErr){
 		}	
 		
 		if(execvp(execvector[0], (char*const*) execvector)==-1) exit(0);
+    } else {
+        if (!firstPipedPid) firstPipedPid = pid;
+        setpgid(pid, firstPipedPid);
+        if (!isBackground)
+            tcsetpgrp(0, pid);
+        job.pid = pid;
+        jobs.push_back(job);
+        /* up */
     }
     return pid;
 }
@@ -84,6 +106,7 @@ void Executor::run(CommandLine* cmdLine) {
     int fdErr = 2;
     int pp[2];
     int last;
+    int firstPipedPid = 0;
     Command * command;
 	pp[0] = 0;
 	pp[1] = 1;
@@ -92,7 +115,7 @@ void Executor::run(CommandLine* cmdLine) {
 			pipe(pp);
 			fdOut = pp[1];
 		}else fdOut = 1;
-        last = run(command, fdIn, fdOut);
+        last = run(command, firstPipedPid, cmdLine->isBackground(), fdIn, fdOut);
     	if(fdIn!=0) close(fdIn);
 		if(fdOut!=1) close(fdOut);
 		fdIn = pp[0];

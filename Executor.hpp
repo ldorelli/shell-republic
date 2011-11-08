@@ -21,7 +21,8 @@ public:
 
 private:
     std::list<Job> jobs;
-    int run(Command* command, int fdIn = 0, int fdOut = 1, int fdErr = 2);
+    int run(Command* command, int & firstPipedPid, bool isBackground,
+            int fdIn = 0, int fdOut = 1, int fdErr = 2);
 public:
     void run(CommandLine* commandLine);
     std::list<Job> & getJobs();

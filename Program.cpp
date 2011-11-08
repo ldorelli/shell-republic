@@ -20,6 +20,7 @@ int main (int argc, char *argv[]) {
     signal (SIGCHLD, SIG_IGN);
     
     tcsetpgrp(0, getpid());
+    
     Parser parser;
     Executor executor;
 	executorPointer = &executor;
