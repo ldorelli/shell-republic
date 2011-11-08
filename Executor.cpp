@@ -96,9 +96,12 @@ void Executor::run(CommandLine* cmdLine) {
     	if(fdIn!=0) close(fdIn);
 		if(fdOut!=1) close(fdOut);
 		fdIn = pp[0];
-	}
+	}    
     if(fdIn!=0) close(fdIn);
 	if (!cmdLine->isBackground()) {
     	while( wait(0)>=0 );
 	}
 }
+
+Executor::Job::Job() : stopped(false){}
+

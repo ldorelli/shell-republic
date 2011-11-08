@@ -15,6 +15,8 @@ public:
         std::string name;
         pid_t pid;
         unsigned jobid;
+        bool    stopped;
+        Job ();
     };
 
 private:
