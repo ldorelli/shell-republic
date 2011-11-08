@@ -5,6 +5,8 @@
 #include "Executor.hpp"
 #include <signal.h>
 
+Executor * executorPointer;
+
 int main (int argc, char *argv[]) {
     
     setpgid(getpid(), getpid());
@@ -13,12 +15,11 @@ int main (int argc, char *argv[]) {
 //    signal (SIGINT, SIG_IGN);
 //    signal (SIGQUIT, SIG_IGN);
     signal (SIGTSTP, SIG_IGN);
-    
     tcsetpgrp(0, getpid());
-    
     Parser parser;
     Executor executor;
-    std::string presentation("shell$ ");
+	executorPointer = &executor;
+    std::string presentation("Shell-Republic$ ");
     while (true) {
         if (parser.newLine()) std::cout << presentation;
         CommandLine *cl = parser.readCommandLine();
