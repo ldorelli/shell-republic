@@ -39,13 +39,20 @@ int Executor::run(Command* command, int fdIn, int fdOut, int fdErr){
     if (!out.empty()) {
         if (fdOut != 1)
             close(fdOut);
-        fdOut = open(out.c_str(), O_WRONLY | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO);
+		if(outap)
+	        fdOut = open(out.c_str(), O_WRONLY | O_CREAT | O_APPEND, S_IRWXU | S_IRWXG | S_IRWXO);
+		else
+	        fdOut = open(out.c_str(), O_WRONLY | O_CREAT | O_TRUNC, S_IRWXU | S_IRWXG | S_IRWXO);
     }
     
     if (!err.empty()) {
         if (fdErr != 2)
             close(fdErr);
-        fdErr = open(err.c_str(), O_WRONLY | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO);
+        if(errap)
+			fdErr = open(err.c_str(), O_WRONLY | O_CREAT | O_APPEND, S_IRWXU | S_IRWXG | S_IRWXO);
+		else	
+			fdErr = open(err.c_str(), O_WRONLY | O_CREAT | O_TRUNC, S_IRWXU | S_IRWXG | S_IRWXO);
+			
     }
     
     int pid = fork();
