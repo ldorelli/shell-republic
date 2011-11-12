@@ -4,8 +4,10 @@
 #include <list>
 #include "MyTypo.hpp"
 #include <cstdio>
+#include <cstdlib>
 #include <signal.h>
 #include <sys/types.h>
+#include <sys/wait.h>
 #include "Handlers.hpp"
 
 void Builtin::run(const char* args[], Executor *executor) {
