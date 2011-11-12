@@ -27,19 +27,27 @@ std::string Parser::nextWord() {
 }
 
 CommandLine* Parser::readCommandLine () {
-    if (line.empty()) {
+    tcsetpgrp(0, getpid());
+    while (line.empty()) {
         index = 0;
-        tcsetpgrp(0, getpid());
+
         
-        sigset_t mask;
-        sigset_t orig_mask;
+//        Solucao parcial :
         
-        sigemptyset(&mask);
-        sigaddset(&mask, SIGCHLD);
+//        sigset_t mask;
+//        sigset_t orig_mask;
+//        
+//        sigemptyset(&mask);
+//        sigaddset(&mask, SIGCHLD);        
+//        sigprocmask(SIG_BLOCK, &mask, &orig_mask);
         
-        sigprocmask(SIG_BLOCK, &mask, &orig_mask);
+        if (std::cin.eof()) {
+            std::cin.clear();
+        }
         std::getline(std::cin, line);
-        sigprocmask(SIG_SETMASK, &orig_mask, 0);
+        
+//        Solucao parcial: 
+//        sigprocmask(SIG_SETMASK, &orig_mask, 0);
     }
     if (line.empty()) return 0;
 
