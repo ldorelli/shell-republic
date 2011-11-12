@@ -20,7 +20,6 @@ int main (int argc, char *argv[]) {
     signal (SIGTSTP, SIG_IGN);
     signal (SIGTTIN, SIG_IGN);
     signal (SIGTTOU, SIG_IGN);
-    signal (SIGCHLD, SIG_IGN);
     
     struct sigaction newAction;
     
@@ -28,11 +27,6 @@ int main (int argc, char *argv[]) {
     sigemptyset(&newAction.sa_mask);
     newAction.sa_flags = 0;
     sigaction (SIGCHLD, &newAction, 0);
-    
-    newAction.sa_handler = handlers::sigTStpHandler;
-    sigemptyset(&newAction.sa_mask);
-    newAction.sa_flags = 0;
-    sigaction (SIGTSTP, &newAction, 0);
     
     tcsetpgrp(0, getpid());
     

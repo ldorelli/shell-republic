@@ -139,11 +139,10 @@ void Executor::run(CommandLine* cmdLine) {
 	}    
     if(fdIn!=0) close(fdIn);
     
-//    TODO: tah errado 
+    // O negativo deixou certo!
 	if (!cmdLine->isBackground()) {
-    	while( wait(0)>=0 );
-        foreground = getpid();
-        tcsetpgrp(0, getpid());
+    	while( waitpid(-firstPipedPid, 0, 0)>=0 );
+        cleanUp();
 	}
 }
 
@@ -161,8 +160,16 @@ void Executor::cleanUp () {
         
         while (itA != itB) {
             int status;
-            if (waitpid(itA->pid, &status, WNOHANG)) {
-                itA = jobs.erase(itA);
+            if (waitpid(itA->pid, &status, WNOHANG | WUNTRACED | WCONTINUED)) {
+                if (WIFSTOPPED(status)) {
+                    itA->stopped = true;
+                    std::cout << '\t' << itA->pid << " stopped\n";
+                    foreground = getpid();
+                } else if (WIFEXITED(status) || WIFSIGNALED(status)){
+                    itA = jobs.erase(itA);
+                } else if (WIFCONTINUED(status)) {
+                    itA->stopped = false;
+                }
             } else itA++;
         }
     }

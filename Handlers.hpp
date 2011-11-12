@@ -3,7 +3,6 @@
 
 namespace handlers {
     void sigChildHandler( int );
-    void sigTStpHandler( int );
     bool getDeathStatus();
     void setDeathStatusFalse();
 }

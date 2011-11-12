@@ -15,6 +15,3 @@ void handlers::setDeathStatusFalse() {
     deathStatus = false;
 }
 
-void handlers::sigTStpHandler( int signum ) {
-    std::cerr << "I'm here oh yeah\nYeah baby yeah!\n";
-}

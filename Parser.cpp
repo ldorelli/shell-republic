@@ -19,6 +19,7 @@ std::string Parser::nextWord() {
         else if (ch == '\\') specialChar = true;
         else if (insideComma) word += ch;
         else if (ch == '"') insideComma = true;
+        else if (ch == '&' && word.length() > 0) {; break; }
         else if (ch != ' ') word += ch;
         else if (!word.empty()) break;
     }
@@ -34,7 +35,6 @@ CommandLine* Parser::readCommandLine () {
         sigset_t orig_mask;
         
         sigemptyset(&mask);
-        sigaddset(&mask, SIGTSTP);
         sigaddset(&mask, SIGCHLD);
         
         sigprocmask(SIG_BLOCK, &mask, &orig_mask);
