@@ -3,6 +3,13 @@
 
 #include <iostream>
 
+
+/**
+ * \brief Firulas
+ *
+ *        Serve apenas para deixar a saida mais bonita, com diferentes
+ *        cores e estilos para a fonte, no terminal
+ */
 class MyTypo {
     
 private:

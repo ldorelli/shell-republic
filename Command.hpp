@@ -7,7 +7,7 @@
 /**
  *
  * \brief Representa um comando entrado pelo usuario.
- *		O comando representa tudo que esta numa linha ou antes de um &.
+ *		O comando representa tudo o que esta antes de um pipe ( | ) ou & ou final de linha.
  */
 class Command {
     const char ** execvector;
