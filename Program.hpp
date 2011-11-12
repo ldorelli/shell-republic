@@ -2,10 +2,11 @@
 #define Program_hpp
 
 class Program {
-    
-    
+
+
 public:
-    int run();
+
+	int run();
 };
 
 #endif
