@@ -15,3 +15,6 @@ void handlers::setDeathStatusFalse() {
     deathStatus = false;
 }
 
+void handlers::setDeathStatusTrue() {
+    deathStatus = true;
+}

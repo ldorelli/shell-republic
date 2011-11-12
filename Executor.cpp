@@ -12,11 +12,11 @@
 #include "MyTypo.hpp"
 #include "Handlers.hpp"
 
-std::list<Executor::Job>& Executor::getJobs() {
-    return jobs;
+std::list<Executor::Job>* Executor::getJobs() {
+    return &jobs;
 }
 
-int Executor::run(Command* command, int & firstPipedPid, bool isBackground,
+int Executor::run(Command* command, int & firstPipedPid, bool isBackground, std::map<std::string, Builtin*>& bCommands,
                   int fdIn, int fdOut, int fdErr){ 
     const char ** execvector = command->getExecv();
     Job job;
@@ -64,59 +64,71 @@ int Executor::run(Command* command, int & firstPipedPid, bool isBackground,
     }
     
     /* mutex aqui */
-    int pid = fork();
+    std::map<std::string, Builtin*>::iterator it = 
+    bCommands.find(std::string(execvector[0]));
     
-    if (pid == 0) {
+    if (it == bCommands.end() || it->second->forkable()) {
+        int pid = fork();
         
-        if (!firstPipedPid) firstPipedPid = getpid();
-        setpgid(getpid(), firstPipedPid);
-        if (!isBackground)
-            tcsetpgrp(0, getpid());
-        
-        signal (SIGINT, SIG_DFL);
-        signal (SIGQUIT, SIG_DFL);
-        signal (SIGTSTP, SIG_DFL);
-        signal (SIGTTIN, SIG_DFL);
-        signal (SIGTTOU, SIG_DFL);
-        signal (SIGCHLD, SIG_DFL);
-        
-		if(fdIn != 0){
-			dup2(fdIn, 0);
-			close(fdIn);
-		}
-		
-		if(fdOut != 1){
-			dup2(fdOut,1);
-			close(fdOut);
-		}
-
-        if(fdErr!=2){
-			dup2(fdErr, 2);
-			close(fdErr);
-		}	
-		
-		if(execvp(execvector[0], (char*const*) execvector)==-1) exit(0);
+        if (pid == 0) {
+            
+            if (!firstPipedPid) firstPipedPid = getpid();
+            setpgid(getpid(), firstPipedPid);
+            if (!isBackground)
+                tcsetpgrp(0, getpid());
+            
+            signal (SIGINT, SIG_DFL);
+            signal (SIGQUIT, SIG_DFL);
+            signal (SIGTSTP, SIG_DFL);
+            signal (SIGTTIN, SIG_DFL);
+            signal (SIGTTOU, SIG_DFL);
+            signal (SIGCHLD, SIG_DFL);
+            
+            if(fdIn != 0){
+                dup2(fdIn, 0);
+                close(fdIn);
+            }
+            
+            if(fdOut != 1){
+                dup2(fdOut,1);
+                close(fdOut);
+            }
+            
+            if(fdErr!=2){
+                dup2(fdErr, 2);
+                close(fdErr);
+            }	
+            
+            if (it == bCommands.end()) {
+                if(execvp(execvector[0], (char*const*) execvector)==-1) exit(0);
+            }
+            else
+                it->second->run(execvector, this);
+        } else {
+            if (!firstPipedPid) firstPipedPid = pid;
+            setpgid(pid, firstPipedPid);
+            job.groupid = firstPipedPid;
+            job.pid = pid;
+            setLastForeground(job.jobid);
+            if (!isBackground) {
+                foreground = firstPipedPid;
+                tcsetpgrp(0, pid);
+            }
+            else {
+                MyTypo myt(MyTypo::NORMAL, MyTypo::PURPLE);
+                std::cout << myt << "[" << job.jobid << "] " << myt <<
+                job.pid << std::endl;
+            }
+            jobs.push_back(job);
+            /* up */
+        }
+        return pid;
     } else {
-        if (!firstPipedPid) firstPipedPid = pid;
-        setpgid(pid, firstPipedPid);
-        job.groupid = firstPipedPid;
-        job.pid = pid;
-        if (!isBackground) {
-            foreground = firstPipedPid;
-            tcsetpgrp(0, pid);
-        }
-        else {
-            MyTypo myt(MyTypo::NORMAL, MyTypo::PURPLE);
-            std::cout << myt << "[" << job.jobid << "] " << myt <<
-            job.pid << std::endl;
-        }
-        jobs.push_back(job);
-        /* up */
+        it->second->run(execvector, this);
     }
-    return pid;
 }
 
-void Executor::run(CommandLine* cmdLine) {
+void Executor::run(CommandLine* cmdLine, std::map<std::string, Builtin*>& bCommands) {
     int fdIn = 0;
     int fdOut = 1;
     int fdErr = 2;
@@ -131,8 +143,7 @@ void Executor::run(CommandLine* cmdLine) {
 			pipe(pp);
 			fdOut = pp[1];
 		}else fdOut = 1;
-        last = run(command, firstPipedPid, cmdLine->isBackground(),
-                   fdIn, fdOut);
+        last = run(command, firstPipedPid, cmdLine->isBackground(), bCommands, fdIn, fdOut);
     	if(fdIn!=0) close(fdIn);
 		if(fdOut!=1) close(fdOut);
 		fdIn = pp[0];
@@ -140,10 +151,11 @@ void Executor::run(CommandLine* cmdLine) {
     if(fdIn!=0) close(fdIn);
     
     // O negativo deixou certo!
-	if (!cmdLine->isBackground()) {
-    	while( waitpid(-firstPipedPid, 0, 0)>=0 );
-        cleanUp();
-	}
+    if (firstPipedPid)
+        if (!cmdLine->isBackground()) {
+            while( waitpid(-firstPipedPid, 0, 0)>=0 );
+            cleanUp();
+        }
 }
 
 void Executor::cleanUp () {
@@ -154,6 +166,7 @@ void Executor::cleanUp () {
         itA = jobs.begin();
         itB = jobs.end();
         
+//        Outra abordagem
 //        while (int who = waitpid(0, &status, WNOHANG)) {
 //            
 //        }
@@ -163,18 +176,31 @@ void Executor::cleanUp () {
             if (waitpid(itA->pid, &status, WNOHANG | WUNTRACED | WCONTINUED)) {
                 if (WIFSTOPPED(status)) {
                     itA->stopped = true;
-                    std::cout << '\t' << itA->pid << " stopped\n";
+                    std::cout << '\n' << itA->pid << " stopped\n";
                     foreground = getpid();
                 } else if (WIFEXITED(status) || WIFSIGNALED(status)){
+                    if (lastForeground == itA->jobid) {
+                        lastForeground = 0;
+                    }
+                    if (foreground == itA->groupid) {
+                        foreground = getpid();
+                    }
                     itA = jobs.erase(itA);
                 } else if (WIFCONTINUED(status)) {
                     itA->stopped = false;
                 }
             } else itA++;
         }
+        if (!lastForeground && !jobs.empty())
+            lastForeground = jobs.begin()->jobid;
     }
 }
 
-Executor::Executor() { foreground = getpid(); }
+void Executor::setForeground (int pid) {foreground = pid; }
+
+int Executor::getLastForeground () { return lastForeground; }
+void Executor::setLastForeground(int jid) { lastForeground = jid;}
+
+Executor::Executor() : lastForeground(0) { foreground = getpid(); }
 Executor::Job::Job() : stopped(false), dead(false) {}
 

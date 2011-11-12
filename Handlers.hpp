@@ -5,6 +5,7 @@ namespace handlers {
     void sigChildHandler( int );
     bool getDeathStatus();
     void setDeathStatusFalse();
+    void setDeathStatusTrue();
 }
 
 #endif
