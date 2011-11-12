@@ -184,6 +184,7 @@ void Executor::cleanUp () {
                     }
                     if (foreground == itA->groupid) {
                         foreground = getpid();
+                        tcsetpgrp(0, foreground);
                     }
                     itA = jobs.erase(itA);
                 } else if (WIFCONTINUED(status)) {

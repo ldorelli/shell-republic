@@ -7,10 +7,9 @@
 #include "Handlers.hpp"
 #include <map>
 #include "Builtin.hpp"
+#include "Program.hpp"
 
-Executor * executorPointer;
-
-int main (int argc, char *argv[]) {
+int Program::run () {
     
     setpgid(getpid(), getpid());
     
@@ -34,13 +33,15 @@ int main (int argc, char *argv[]) {
     bCommands[std::string("jobs")] = new JobsCommand();
     bCommands[std::string("pwd")] = new PwdCommand();
     bCommands[std::string("exit")] = new ExitCommand();
+    bCommands[std::string("quit")] = 
+    bCommands[std::string("exit")];
     bCommands[std::string("cd")] = new CdCommand();
     bCommands[std::string("bg")] = new BgCommand();
     bCommands[std::string("fg")] = new FgCommand();
+    bCommands[std::string("kill")] = new KillCommand();
     
     Parser parser;
     Executor executor;
-	executorPointer = &executor;
     
     MyTypo myt1(MyTypo::NORMAL, MyTypo::CYAN);
     MyTypo myt2(MyTypo::NORMAL, MyTypo::BROWN);

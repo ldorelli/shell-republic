@@ -39,4 +39,8 @@ class ExitCommand : public Builtin {
     int _run(const char*[], Executor*);
 };
 
+class KillCommand : public Builtin {
+    int _run(const char*[], Executor*);
+};
+
 #endif

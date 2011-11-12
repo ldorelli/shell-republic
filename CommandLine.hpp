@@ -1,5 +1,5 @@
-#ifndef __COMMANDLIST_HPP__
-#define __COMMANDLIST_HPP__
+#ifndef CommandLine_hpp
+#define CommandLine_hpp
 
 #include "Command.hpp"
 #include <list>

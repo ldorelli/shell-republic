@@ -1,5 +1,5 @@
-#ifndef __PARSER_HPP__
-#define __PARSER_HPP__
+#ifndef Parser_hpp
+#define Parser_hpp
 
 #include <string>
 #include "CommandLine.hpp"

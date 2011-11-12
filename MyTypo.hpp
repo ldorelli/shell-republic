@@ -1,5 +1,5 @@
-#ifndef _colors_h
-#define _colors_h
+#ifndef MyTypo_hpp
+#define MyTypo_hpp
 
 #include <iostream>
 

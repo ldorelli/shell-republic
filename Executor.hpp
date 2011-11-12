@@ -1,5 +1,5 @@
-#ifndef __Executor_HPP__
-#define __Executor_HPP__
+#ifndef Executor_hpp
+#define Executor_hpp
 
 #include <string>
 #include <vector>

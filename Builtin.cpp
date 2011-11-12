@@ -54,7 +54,7 @@ int FgCommand::_run(const char * args[], Executor * executor) {
     int jobid;
     
     if (args[1] == 0) jobid = executor->getLastForeground();
-    else sscanf(args[1], "%d", &jobid);
+    else sscanf(args[1], "%%%d", &jobid);
     
     MyTypo myt (MyTypo::NORMAL, MyTypo::PURPLE);
     
@@ -83,7 +83,7 @@ int BgCommand::_run(const char * args[], Executor * executor) {
     int jobid;
     
     if (args[1] == 0) jobid = executor->getLastForeground();
-    else sscanf(args[1], "%d", &jobid);
+    else sscanf(args[1], "%%%d", &jobid);
     
     MyTypo myt (MyTypo::NORMAL, MyTypo::PURPLE);
     
@@ -91,6 +91,30 @@ int BgCommand::_run(const char * args[], Executor * executor) {
         if (itA->jobid == jobid) {
             executor->setLastForeground(itA->jobid);
             kill(itA->pid, SIGCONT);
+            handlers::setDeathStatusTrue();
+            std::cout << myt << '[' << itA->jobid << "] " <<
+            myt << itA->pid << " (" << itA->groupid << ")\t\t" <<
+            itA->name << '\n';
+            break;
+        }
+    }
+    
+    return 0;
+}
+
+int KillCommand::_run(const char * args[], Executor * executor) {
+    std::list<Executor::Job> *lj = executor->getJobs();
+    std::list<Executor::Job>::iterator itA, itB;
+    int jobid;
+    
+    if (args[1] == 0) return 0;
+    else sscanf(args[1], "%%%d", &jobid);
+    
+    MyTypo myt (MyTypo::NORMAL, MyTypo::PURPLE);
+    
+    for (itA = lj->begin(), itB = lj->end(); itA!=itB; itA++) {
+        if (itA->jobid == jobid) {
+            kill(itA->pid, SIGTERM);
             handlers::setDeathStatusTrue();
             std::cout << myt << '[' << itA->jobid << "] " <<
             myt << itA->pid << " (" << itA->groupid << ")\t\t" <<
