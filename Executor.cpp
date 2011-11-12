@@ -9,7 +9,6 @@
 #include <iostream>
 #include <cstdlib>
 #include <utility>
-#include <termios.h>
 #include "MyTypo.hpp"
 #include "Handlers.hpp"
 
@@ -105,7 +104,6 @@ int Executor::run(Command* command, int & firstPipedPid, bool isBackground,
         if (!isBackground) {
             foreground = firstPipedPid;
             tcsetpgrp(0, pid);
-            tcsetattr(0, TCSADRAIN, 0);
         }
         else {
             MyTypo myt(MyTypo::NORMAL, MyTypo::PURPLE);
@@ -170,6 +168,6 @@ void Executor::cleanUp () {
     }
 }
 
-Executor::Executor() { tcgetattr(0, &myTermios); foreground = getpid(); }
+Executor::Executor() { foreground = getpid(); }
 Executor::Job::Job() : stopped(false), dead(false) {}
 

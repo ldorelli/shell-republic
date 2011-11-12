@@ -1,5 +1,5 @@
 #include "Handlers.hpp"
-#include <cstdio>
+#include <iostream>
 
 bool deathStatus = false;
 
@@ -16,5 +16,5 @@ void handlers::setDeathStatusFalse() {
 }
 
 void handlers::sigTStpHandler( int signum ) {
-    printf("I'm here oh yeah\nYeah baby yeah!\n");
+    std::cerr << "I'm here oh yeah\nYeah baby yeah!\n";
 }
