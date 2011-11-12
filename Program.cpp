@@ -47,6 +47,6 @@ int main (int argc, char *argv[]) {
         if (cl)
             executor.run(cl);
         delete cl;
-    } else tcsetpgrp(STDIN_FILENO, getpid());
+    }
     return 0;
 }

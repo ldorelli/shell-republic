@@ -144,11 +144,14 @@ void Executor::run(CommandLine* cmdLine) {
 //    TODO: tah errado 
 	if (!cmdLine->isBackground()) {
     	while( wait(0)>=0 );
+        foreground = getpid();
+        tcsetpgrp(0, getpid());
 	}
 }
 
 void Executor::cleanUp () {
     while (handlers::getDeathStatus()) {
+        tcsetpgrp(0, foreground);
         handlers::setDeathStatusFalse();
         std::list<Job>::iterator itA, itB;
         itA = jobs.begin();
@@ -161,21 +164,12 @@ void Executor::cleanUp () {
         while (itA != itB) {
             int status;
             if (waitpid(itA->pid, &status, WNOHANG)) {
-                std::cerr << "YUHHUUU\n";
-                std::cerr << foreground << " - " << itA->groupid << '\n';
-                if (itA->groupid == foreground) {
-                    tcsetpgrp(0, getpid());
-                    tcsetattr(0, TCSADRAIN, &myTermios);
-                    foreground = 0;
-                    std::cerr << "passei por aqui ! \n";
-                    std::cerr << tcgetpgrp(0) << std::endl;
-                }
                 itA = jobs.erase(itA);
             } else itA++;
         }
     }
 }
 
-Executor::Executor() : foreground(0) { tcgetattr(0, &myTermios); }
+Executor::Executor() { tcgetattr(0, &myTermios); foreground = getpid(); }
 Executor::Job::Job() : stopped(false), dead(false) {}
 

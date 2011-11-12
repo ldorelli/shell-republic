@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include "Command.hpp"
+#include <signal.h>
 
 Parser::Parser() : index(0) {}
 
@@ -27,7 +28,18 @@ std::string Parser::nextWord() {
 CommandLine* Parser::readCommandLine () {
     if (line.empty()) {
         index = 0;
+        tcsetpgrp(0, getpid());
+        
+        sigset_t mask;
+        sigset_t orig_mask;
+        
+        sigemptyset(&mask);
+        sigaddset(&mask, SIGTSTP);
+        sigaddset(&mask, SIGCHLD);
+        
+        sigprocmask(SIG_BLOCK, &mask, &orig_mask);
         std::getline(std::cin, line);
+        sigprocmask(SIG_SETMASK, &orig_mask, 0);
     }
     if (line.empty()) return 0;
 
