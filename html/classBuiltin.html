@@ -55,6 +55,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <!-- doxytag: class="Builtin" -->
+<p>Classe abstrata para comandos Built-In.  
+<a href="#_details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="Builtin_8hpp_source.html">Builtin.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Builtin:</div>
@@ -76,10 +79,15 @@ Inheritance diagram for Builtin:</div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBuiltin.html#aeb4e6144d47e07c4afedb20ee66671be">run</a> (const char *[], <a class="el" href="classExecutor.html">Executor</a> *)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBuiltin.html#a644e21a1429bd2e0603b89bd807e521d">run</a> (const char *args[], <a class="el" href="classExecutor.html">Executor</a> *executor)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Executa um comando built in.  <a href="#a644e21a1429bd2e0603b89bd807e521d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBuiltin.html#a91ec773bbed5e1a8808955d9b48e664b">forkable</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Se o comando pode ser executado como um proceso independente.  <a href="#a91ec773bbed5e1a8808955d9b48e664b"></a><br/></td></tr>
 </table>
-<hr/><h2>Member Function Documentation</h2>
+<hr/><a name="_details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p>Classe abstrata para comandos Built-In. </p>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="classExecutor.html" title="Responsavel pela execucao. Executa uma linha de comando.">Executor</a> </dd></dl>
+</div><hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="a91ec773bbed5e1a8808955d9b48e664b"></a><!-- doxytag: member="Builtin::forkable" ref="a91ec773bbed5e1a8808955d9b48e664b" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -94,9 +102,11 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
+<p>Se o comando pode ser executado como um proceso independente. </p>
+
 </div>
 </div>
-<a class="anchor" id="aeb4e6144d47e07c4afedb20ee66671be"></a><!-- doxytag: member="Builtin::run" ref="aeb4e6144d47e07c4afedb20ee66671be" args="(const char *[], Executor *)" -->
+<a class="anchor" id="a644e21a1429bd2e0603b89bd807e521d"></a><!-- doxytag: member="Builtin::run" ref="a644e21a1429bd2e0603b89bd807e521d" args="(const char *args[], Executor *executor)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -121,6 +131,15 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
+<p>Executa um comando built in. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">args</td><td>Argumentos do comando, incluindo seu nome. </td></tr>
+    <tr><td class="paramname">executor</td><td>Pointeiro para uma instancia de <a class="el" href="classExecutor.html" title="Responsavel pela execucao. Executa uma linha de comando.">Executor</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
@@ -142,7 +161,7 @@ Public Member Functions</h2></td></tr>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sat Nov 12 2011 20:55:30 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sat Nov 12 2011 21:23:01 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>

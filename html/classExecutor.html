@@ -66,11 +66,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td colspan="2"><h2><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structExecutor_1_1Job.html">Job</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Estrutura que representa um job. Guarda os dados necessarios para controlar processos.  <a href="structExecutor_1_1Job.html#_details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExecutor.html#af10e2be4ceafc43c65cb888d14a519de">Executor</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExecutor.html#ab0fe153cc70998a0b89837fab30c50c7">run</a> (<a class="el" href="classCommandLine.html">CommandLine</a> *commandLine, std::map&lt; std::string, <a class="el" href="classBuiltin.html">Builtin</a> * &gt; &amp;bCommands)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Executa uma linha de comando. Executa os comandos de uma <a class="el" href="classCommandLine.html">CommandLine</a>.  <a href="#ab0fe153cc70998a0b89837fab30c50c7"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Executa uma linha de comando. Executa os comandos de uma <a class="el" href="classCommandLine.html" title="Represeta uma linha de comando.">CommandLine</a>.  <a href="#ab0fe153cc70998a0b89837fab30c50c7"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExecutor.html#a62f3a102e3cd4fcfd66697e84bd6eb7a">cleanUp</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Realiza ajustes na lista de jobs, se necessario. Percorre a lista de jobs, removendo, atualizando status, quando necessario.  <a href="#a62f3a102e3cd4fcfd66697e84bd6eb7a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExecutor.html#aba6c22f3bd51d26d2fb403664294ada8">setForeground</a> (int pid)</td></tr>
@@ -83,7 +84,7 @@ Public Member Functions</h2></td></tr>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Responsavel pela execucao. Executa uma linha de comando. </p>
 <p>Uma instancia de <a class="el" href="classExecutor.html" title="Responsavel pela execucao. Executa uma linha de comando.">Executor</a> guarda a lista de processos que sao extraidos das linhas de comando recebidas. Controla a atualizacao dos estados dos processos.</p>
-<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="classCommandLine.html">CommandLine</a>, <a class="el" href="classCommand.html" title="Representa um comando entrado pelo usuario. O comando representa tudo que esta numa linha ou antes de...">Command</a> </dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="classCommandLine.html" title="Represeta uma linha de comando.">CommandLine</a>, <a class="el" href="classCommand.html" title="Representa um comando entrado pelo usuario. O comando representa tudo o que esta antes de um pipe ( |...">Command</a> </dd></dl>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="af10e2be4ceafc43c65cb888d14a519de"></a><!-- doxytag: member="Executor::Executor" ref="af10e2be4ceafc43c65cb888d14a519de" args="()" -->
 <div class="memitem">
@@ -117,7 +118,7 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Realiza ajustes na lista de jobs, se necessario. Percorre a lista de jobs, removendo, atualizando status, quando necessario. </p>
-<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="structExecutor_1_1Job.html">Job</a>, <a class="el" href="namespacehandlers.html">handlers</a> </dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="structExecutor_1_1Job.html" title="Estrutura que representa um job. Guarda os dados necessarios para controlar processos.">Job</a>, <a class="el" href="namespacehandlers.html">handlers</a> </dd></dl>
 
 </div>
 </div>
@@ -180,8 +181,8 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Executa uma linha de comando. Executa os comandos de uma <a class="el" href="classCommandLine.html">CommandLine</a>. </p>
-<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="classParser.html">Parser</a>, <a class="el" href="classCommandLine.html">CommandLine</a>, <a class="el" href="classBuiltin.html">Builtin</a> </dd></dl>
+<p>Executa uma linha de comando. Executa os comandos de uma <a class="el" href="classCommandLine.html" title="Represeta uma linha de comando.">CommandLine</a>. </p>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="classParser.html">Parser</a>, <a class="el" href="classCommandLine.html" title="Represeta uma linha de comando.">CommandLine</a>, <a class="el" href="classBuiltin.html" title="Classe abstrata para comandos Built-In.">Builtin</a> </dd></dl>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">commandLine</td><td>Linha de comando a ser executada. </td></tr>
@@ -227,7 +228,7 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Altera qual processo deve ir para foreground. Quando ocorrer uma chamada a fg, o processo configurado sera utilizado. </p>
-<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="classFgCommand.html">FgCommand</a>, <a class="el" href="classBgCommand.html">BgCommand</a> </dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="classFgCommand.html" title="Classe que implementa o comando fg. Sintaxe: fg %&lt;JOBID&gt; | fg.">FgCommand</a>, <a class="el" href="classBgCommand.html" title="Classe que implementa o comando bg. Sintaxe: bg %&lt;JOBID&gt; | bg.">BgCommand</a> </dd></dl>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">jobid</td><td>JobID do processo a ser configurado. </td></tr>
@@ -256,7 +257,7 @@ Public Member Functions</h2></td></tr>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sat Nov 12 2011 20:55:31 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sat Nov 12 2011 21:23:01 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>

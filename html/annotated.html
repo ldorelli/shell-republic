@@ -53,21 +53,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <div class="textblock">Here are the classes, structs, unions and interfaces with brief descriptions:</div><table>
-  <tr><td class="indexkey"><a class="el" href="classBgCommand.html">BgCommand</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classBuiltin.html">Builtin</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classCdCommand.html">CdCommand</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classCommand.html">Command</a></td><td class="indexvalue">Representa um comando entrado pelo usuario. O comando representa tudo que esta numa linha ou antes de um &amp; </td></tr>
-  <tr><td class="indexkey"><a class="el" href="classCommandLine.html">CommandLine</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="classBgCommand.html">BgCommand</a></td><td class="indexvalue">Classe que implementa o comando bg. Sintaxe: bg %&lt;JOBID&gt; | bg </td></tr>
+  <tr><td class="indexkey"><a class="el" href="classBuiltin.html">Builtin</a></td><td class="indexvalue">Classe abstrata para comandos Built-In </td></tr>
+  <tr><td class="indexkey"><a class="el" href="classCdCommand.html">CdCommand</a></td><td class="indexvalue">Classe que implementa o comando cd. Sintaxe: cd &lt;diretorio&gt; </td></tr>
+  <tr><td class="indexkey"><a class="el" href="classCommand.html">Command</a></td><td class="indexvalue">Representa um comando entrado pelo usuario. O comando representa tudo o que esta antes de um pipe ( | ) ou &amp; ou final de linha </td></tr>
+  <tr><td class="indexkey"><a class="el" href="classCommandLine.html">CommandLine</a></td><td class="indexvalue">Represeta uma linha de comando </td></tr>
   <tr><td class="indexkey"><a class="el" href="classExecutor.html">Executor</a></td><td class="indexvalue">Responsavel pela execucao. Executa uma linha de comando </td></tr>
-  <tr><td class="indexkey"><a class="el" href="classExitCommand.html">ExitCommand</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classFgCommand.html">FgCommand</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="structExecutor_1_1Job.html">Executor::Job</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classJobsCommand.html">JobsCommand</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classKillCommand.html">KillCommand</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classMyTypo.html">MyTypo</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="classExitCommand.html">ExitCommand</a></td><td class="indexvalue">Classe que implementa o comando exit. Sintaxe: exit, quit </td></tr>
+  <tr><td class="indexkey"><a class="el" href="classFgCommand.html">FgCommand</a></td><td class="indexvalue">Classe que implementa o comando fg. Sintaxe: fg %&lt;JOBID&gt; | fg </td></tr>
+  <tr><td class="indexkey"><a class="el" href="structExecutor_1_1Job.html">Executor::Job</a></td><td class="indexvalue">Estrutura que representa um job. Guarda os dados necessarios para controlar processos </td></tr>
+  <tr><td class="indexkey"><a class="el" href="classJobsCommand.html">JobsCommand</a></td><td class="indexvalue">Classe que implementa o comando jobs. Sintaxe: jobs </td></tr>
+  <tr><td class="indexkey"><a class="el" href="classKillCommand.html">KillCommand</a></td><td class="indexvalue">Classe que implementa o comando kill. Sintaxe: kill %&lt;JOBID&gt; </td></tr>
+  <tr><td class="indexkey"><a class="el" href="classMyTypo.html">MyTypo</a></td><td class="indexvalue">Firulas </td></tr>
   <tr><td class="indexkey"><a class="el" href="classParser.html">Parser</a></td><td class="indexvalue"></td></tr>
   <tr><td class="indexkey"><a class="el" href="classProgram.html">Program</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classPwdCommand.html">PwdCommand</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="classPwdCommand.html">PwdCommand</a></td><td class="indexvalue">Classe que implementa o comando pwd. Sintaxe: pwd </td></tr>
 </table>
 </div>
 <!--- window showing the filter options -->
@@ -84,7 +84,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sat Nov 12 2011 20:55:30 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sat Nov 12 2011 21:23:01 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>

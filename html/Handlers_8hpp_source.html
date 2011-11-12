@@ -53,13 +53,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define Handlers_HPP</span>
 <a name="l00003"></a>00003 <span class="preprocessor"></span>
 <a name="l00004"></a><a class="code" href="namespacehandlers.html">00004</a> <span class="keyword">namespace </span>handlers {
-<a name="l00005"></a>00005     <span class="keywordtype">void</span> <a class="code" href="namespacehandlers.html#aa02fd1a028b7cfc01ccb52b9f70cb624">sigChildHandler</a>( <span class="keywordtype">int</span> );
-<a name="l00006"></a>00006     <span class="keywordtype">bool</span> <a class="code" href="namespacehandlers.html#a7f732d800eb51bf0ee24d554ce770276">getDeathStatus</a>();
-<a name="l00007"></a>00007     <span class="keywordtype">void</span> <a class="code" href="namespacehandlers.html#a254dfa6abeed4136e566fd013aa9fdc4">setDeathStatusFalse</a>();
-<a name="l00008"></a>00008     <span class="keywordtype">void</span> <a class="code" href="namespacehandlers.html#a06dc78ff46f5dcc7fb9c09a495caf4ff">setDeathStatusTrue</a>();
-<a name="l00009"></a>00009 }
-<a name="l00010"></a>00010 
-<a name="l00011"></a>00011 <span class="preprocessor">#endif</span>
+<a name="l00010"></a>00010     <span class="keywordtype">void</span> <a class="code" href="namespacehandlers.html#aa02fd1a028b7cfc01ccb52b9f70cb624" title="Handler para SIGCHLD. Levanta uma flag dizendo que um sinal vindo de um provesso filho foi lancado...">sigChildHandler</a>( <span class="keywordtype">int</span> );
+<a name="l00014"></a>00014     <span class="keywordtype">bool</span> <a class="code" href="namespacehandlers.html#a7f732d800eb51bf0ee24d554ce770276">getDeathStatus</a>();
+<a name="l00019"></a>00019     <span class="keywordtype">void</span> <a class="code" href="namespacehandlers.html#a254dfa6abeed4136e566fd013aa9fdc4" title="Altera a flag de sinais recebidos. Altera o valor da flag de sinais recebidos para false...">setDeathStatusFalse</a>();
+<a name="l00020"></a>00020 
+<a name="l00025"></a>00025     <span class="keywordtype">void</span> <a class="code" href="namespacehandlers.html#a06dc78ff46f5dcc7fb9c09a495caf4ff" title="Altera a flag de sinais recebidos. Altera o valor da flag de sinais recebidos para true...">setDeathStatusTrue</a>();
+<a name="l00026"></a>00026 }
+<a name="l00027"></a>00027 
+<a name="l00028"></a>00028 <span class="preprocessor">#endif</span>
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -76,7 +77,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sat Nov 12 2011 20:55:30 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sat Nov 12 2011 21:23:01 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>

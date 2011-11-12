@@ -62,11 +62,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00011"></a>00011 <span class="preprocessor">#include &quot;<a class="code" href="Builtin_8hpp.html">Builtin.hpp</a>&quot;</span>
 <a name="l00012"></a>00012 <span class="preprocessor">#include &lt;map&gt;</span>
 <a name="l00013"></a>00013 
-<a name="l00014"></a>00014 <span class="keyword">class </span><a class="code" href="classBuiltin.html">Builtin</a>;
+<a name="l00014"></a>00014 <span class="keyword">class </span><a class="code" href="classBuiltin.html" title="Classe abstrata para comandos Built-In.">Builtin</a>;
 <a name="l00015"></a>00015 
 <a name="l00024"></a><a class="code" href="classExecutor.html">00024</a> <span class="keyword">class </span><a class="code" href="classExecutor.html" title="Responsavel pela execucao. Executa uma linha de comando.">Executor</a> {
 <a name="l00025"></a>00025 <span class="keyword">public</span>:
-<a name="l00031"></a><a class="code" href="structExecutor_1_1Job.html">00031</a>     <span class="keyword">struct </span><a class="code" href="structExecutor_1_1Job.html">Job</a> {
+<a name="l00031"></a><a class="code" href="structExecutor_1_1Job.html">00031</a>     <span class="keyword">struct </span><a class="code" href="structExecutor_1_1Job.html" title="Estrutura que representa um job. Guarda os dados necessarios para controlar processos.">Job</a> {
 <a name="l00032"></a><a class="code" href="structExecutor_1_1Job.html#a38039efac2d62af668c99b63719f6125">00032</a>         std::string <a class="code" href="structExecutor_1_1Job.html#a38039efac2d62af668c99b63719f6125">name</a>;
 <a name="l00033"></a><a class="code" href="structExecutor_1_1Job.html#a8d9163526e877fe1f603b66504ef8950">00033</a>         pid_t       <a class="code" href="structExecutor_1_1Job.html#a8d9163526e877fe1f603b66504ef8950">pid</a>;
 <a name="l00034"></a><a class="code" href="structExecutor_1_1Job.html#a9429fceffd304e1666ba1e8d0495c3f9">00034</a>         <span class="keywordtype">unsigned</span>        <a class="code" href="structExecutor_1_1Job.html#a9429fceffd304e1666ba1e8d0495c3f9">jobid</a>;
@@ -78,13 +78,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00040"></a>00040 
 <a name="l00041"></a>00041 <span class="keyword">private</span>:
 <a name="l00042"></a>00042     std::list&lt;Job&gt; jobs;
-<a name="l00043"></a>00043     <span class="keywordtype">int</span> run(<a class="code" href="classCommand.html" title="Representa um comando entrado pelo usuario. O comando representa tudo que esta numa linha ou antes de...">Command</a>* command, <span class="keywordtype">int</span> &amp; firstPipedPid, <span class="keywordtype">bool</span> isBackground, std::map&lt;std::string, Builtin*&gt;&amp;,
+<a name="l00043"></a>00043     <span class="keywordtype">int</span> run(<a class="code" href="classCommand.html" title="Representa um comando entrado pelo usuario. O comando representa tudo o que esta antes de um pipe ( |...">Command</a>* command, <span class="keywordtype">int</span> &amp; firstPipedPid, <span class="keywordtype">bool</span> isBackground, std::map&lt;std::string, Builtin*&gt;&amp;,
 <a name="l00044"></a>00044             <span class="keywordtype">int</span> fdIn = 0, <span class="keywordtype">int</span> fdOut = 1, <span class="keywordtype">int</span> fdErr = 2);
 <a name="l00045"></a>00045     <span class="keywordtype">unsigned</span> foreground;
 <a name="l00046"></a>00046     <span class="keywordtype">unsigned</span> lastForeground;
 <a name="l00047"></a>00047 <span class="keyword">public</span>:
 <a name="l00048"></a>00048     <a class="code" href="classExecutor.html#af10e2be4ceafc43c65cb888d14a519de">Executor</a>();
-<a name="l00058"></a>00058         <span class="keywordtype">void</span> run(<a class="code" href="classCommandLine.html">CommandLine</a>* commandLine, std::map&lt;std::string, Builtin*&gt;&amp; bCommands);
+<a name="l00058"></a>00058         <span class="keywordtype">void</span> run(<a class="code" href="classCommandLine.html" title="Represeta uma linha de comando.">CommandLine</a>* commandLine, std::map&lt;std::string, Builtin*&gt;&amp; bCommands);
 <a name="l00059"></a>00059 
 <a name="l00067"></a>00067     <span class="keywordtype">void</span> <a class="code" href="classExecutor.html#a62f3a102e3cd4fcfd66697e84bd6eb7a" title="Realiza ajustes na lista de jobs, se necessario. Percorre a lista de jobs, removendo, atualizando status, quando necessario.">cleanUp</a> ();
 <a name="l00068"></a>00068 
@@ -114,7 +114,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sat Nov 12 2011 20:55:30 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sat Nov 12 2011 21:23:01 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>

@@ -23,10 +23,10 @@ class Builtin;
  */
 class Executor {
 public:
-	/** /brief Estrutura que representa um job.
+	/** \brief Estrutura que representa um job.
 	 *			Guarda os dados necessarios para controlar processos.
 	 *
-	 *	/sa Executor
+	 *	\sa Executor
 	 */
     struct Job {
         std::string name;

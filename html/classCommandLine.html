@@ -55,20 +55,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <!-- doxytag: class="CommandLine" -->
+<p>Represeta uma linha de comando.  
+<a href="#_details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="CommandLine_8hpp_source.html">CommandLine.hpp</a>&gt;</code></p>
 
 <p><a href="classCommandLine-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCommandLine.html">CommandLine</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandLine.html#af14743d91891651d369d18644c2f4bb3">operator=</a> (<a class="el" href="classCommandLine.html">CommandLine</a> &amp;)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCommandLine.html">CommandLine</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandLine.html#a6afe6535f161927c0f658c51b9b63387">operator=</a> (<a class="el" href="classCommandLine.html">CommandLine</a> &amp;commandLine)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandLine.html#a5c92f3c1c27926725eba68012f94d037">CommandLine</a> (std::list&lt; <a class="el" href="classCommand.html">Command</a> * &gt; *pipeline, bool background)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construtor.  <a href="#a5c92f3c1c27926725eba68012f94d037"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandLine.html#ac359efccafe57f845b1f747a9db3c6d9">~CommandLine</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCommand.html">Command</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandLine.html#a34c3031124c1716e37170c5e60b487b2">next</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Navega pela pipeline existente A cada utilizacao, o comando extraido e retirado completamente da pipeline existente.  <a href="#a34c3031124c1716e37170c5e60b487b2"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandLine.html#a1994cb40c62ba84af078662842009a0b">hasNext</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandLine.html#a4dfa18cb1625e1d25c6e5e68bbbc712e">isBackground</a> ()</td></tr>
 </table>
-<hr/><h2>Constructor &amp; Destructor Documentation</h2>
+<hr/><a name="_details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p>Represeta uma linha de comando. </p>
+<p>Uma linha de comando pode conter uma serie de comandos em pipeline e termina quando ha um &amp; ou um final de linha. A linha de comando pode ser gerada por uma instancia de <a class="el" href="classParser.html">Parser</a></p>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="classCommand.html" title="Representa um comando entrado pelo usuario. O comando representa tudo o que esta antes de um pipe ( |...">Command</a>, <a class="el" href="classParser.html">Parser</a> </dd></dl>
+</div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a5c92f3c1c27926725eba68012f94d037"></a><!-- doxytag: member="CommandLine::CommandLine" ref="a5c92f3c1c27926725eba68012f94d037" args="(std::list&lt; Command * &gt; *pipeline, bool background)" -->
 <div class="memitem">
 <div class="memproto">
@@ -93,6 +102,15 @@ Public Member Functions</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Construtor. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pipeLine</td><td>lista de comandos representando a pipeline </td></tr>
+    <tr><td class="paramname">background</td><td>verdadeira, caso a pipeline deva ser executada em segundo plano </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -126,6 +144,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<dl class="return"><dt><b>Returns:</b></dt><dd>Verdadeiro se a pipeline nao esta vazia </dd></dl>
 
 </div>
 </div>
@@ -142,6 +161,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<dl class="return"><dt><b>Returns:</b></dt><dd>Verdadeiro se a pipeline deve ser executada em segundo plano </dd></dl>
 
 </div>
 </div>
@@ -159,9 +179,12 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
+<p>Navega pela pipeline existente A cada utilizacao, o comando extraido e retirado completamente da pipeline existente. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Um ponteiro para o proximo comando da pipeline existente ou NULL o ultimo comando retirado tenha sido o ultimo </dd></dl>
+
 </div>
 </div>
-<a class="anchor" id="af14743d91891651d369d18644c2f4bb3"></a><!-- doxytag: member="CommandLine::operator=" ref="af14743d91891651d369d18644c2f4bb3" args="(CommandLine &amp;)" -->
+<a class="anchor" id="a6afe6535f161927c0f658c51b9b63387"></a><!-- doxytag: member="CommandLine::operator=" ref="a6afe6535f161927c0f658c51b9b63387" args="(CommandLine &amp;commandLine)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -169,7 +192,7 @@ Public Member Functions</h2></td></tr>
           <td class="memname"><a class="el" href="classCommandLine.html">CommandLine</a>&amp; CommandLine::operator= </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classCommandLine.html">CommandLine</a> &amp;&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><em>commandLine</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -197,7 +220,7 @@ Public Member Functions</h2></td></tr>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sat Nov 12 2011 20:55:31 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sat Nov 12 2011 21:23:01 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>

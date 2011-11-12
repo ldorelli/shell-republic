@@ -6,13 +6,13 @@
 \begin{DoxyCompactItemize}
 \item 
 void \hyperlink{namespacehandlers_aa02fd1a028b7cfc01ccb52b9f70cb624}{sigChildHandler} (int)
-\item 
+\begin{DoxyCompactList}\small\item\em Handler para SIGCHLD. Levanta uma flag dizendo que um sinal vindo de um provesso filho foi lancado. \item\end{DoxyCompactList}\item 
 bool \hyperlink{namespacehandlers_a7f732d800eb51bf0ee24d554ce770276}{getDeathStatus} ()
 \item 
 void \hyperlink{namespacehandlers_a254dfa6abeed4136e566fd013aa9fdc4}{setDeathStatusFalse} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Altera a flag de sinais recebidos. Altera o valor da flag de sinais recebidos para false. \item\end{DoxyCompactList}\item 
 void \hyperlink{namespacehandlers_a06dc78ff46f5dcc7fb9c09a495caf4ff}{setDeathStatusTrue} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Altera a flag de sinais recebidos. Altera o valor da flag de sinais recebidos para true. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
@@ -25,6 +25,9 @@ void \hyperlink{namespacehandlers_a06dc78ff46f5dcc7fb9c09a495caf4ff}{setDeathSta
 \end{DoxyParamCaption}
 )}}
 \label{namespacehandlers_a7f732d800eb51bf0ee24d554ce770276}
+\begin{DoxyReturn}{Returns}
+Retorna se ha novos sinais para serem processados. 
+\end{DoxyReturn}
 \hypertarget{namespacehandlers_a254dfa6abeed4136e566fd013aa9fdc4}{
 \index{handlers@{handlers}!setDeathStatusFalse@{setDeathStatusFalse}}
 \index{setDeathStatusFalse@{setDeathStatusFalse}!handlers@{handlers}}
@@ -34,6 +37,10 @@ void \hyperlink{namespacehandlers_a06dc78ff46f5dcc7fb9c09a495caf4ff}{setDeathSta
 \end{DoxyParamCaption}
 )}}
 \label{namespacehandlers_a254dfa6abeed4136e566fd013aa9fdc4}
+
+
+Altera a flag de sinais recebidos. Altera o valor da flag de sinais recebidos para false. 
+
 \hypertarget{namespacehandlers_a06dc78ff46f5dcc7fb9c09a495caf4ff}{
 \index{handlers@{handlers}!setDeathStatusTrue@{setDeathStatusTrue}}
 \index{setDeathStatusTrue@{setDeathStatusTrue}!handlers@{handlers}}
@@ -43,6 +50,10 @@ void \hyperlink{namespacehandlers_a06dc78ff46f5dcc7fb9c09a495caf4ff}{setDeathSta
 \end{DoxyParamCaption}
 )}}
 \label{namespacehandlers_a06dc78ff46f5dcc7fb9c09a495caf4ff}
+
+
+Altera a flag de sinais recebidos. Altera o valor da flag de sinais recebidos para true. 
+
 \hypertarget{namespacehandlers_aa02fd1a028b7cfc01ccb52b9f70cb624}{
 \index{handlers@{handlers}!sigChildHandler@{sigChildHandler}}
 \index{sigChildHandler@{sigChildHandler}!handlers@{handlers}}
@@ -52,3 +63,7 @@ void \hyperlink{namespacehandlers_a06dc78ff46f5dcc7fb9c09a495caf4ff}{setDeathSta
 \end{DoxyParamCaption}
 )}}
 \label{namespacehandlers_aa02fd1a028b7cfc01ccb52b9f70cb624}
+
+
+Handler para SIGCHLD. Levanta uma flag dizendo que um sinal vindo de um provesso filho foi lancado. 
+
