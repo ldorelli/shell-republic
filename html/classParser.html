@@ -55,6 +55,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <!-- doxytag: class="Parser" -->
+<p>Utilizado para converter a entrada do usuario em uma <a class="el" href="classCommandLine.html" title="Represeta uma linha de comando.">CommandLine</a>.  
+<a href="#_details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="Parser_8hpp_source.html">Parser.hpp</a>&gt;</code></p>
 
 <p><a href="classParser-members.html">List of all members.</a></p>
@@ -65,7 +68,10 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCommandLine.html">CommandLine</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#a992f6612be5ab4a587e29c7ed5c824c3">readCommandLine</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#a2d6e80902c93ceed3d8f9a2f7cacd50c">newLine</a> ()</td></tr>
 </table>
-<hr/><h2>Constructor &amp; Destructor Documentation</h2>
+<hr/><a name="_details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p>Utilizado para converter a entrada do usuario em uma <a class="el" href="classCommandLine.html" title="Represeta uma linha de comando.">CommandLine</a>. </p>
+<p>A linha de usuario deve ter a seguinte forma &lt;comando&gt;&lt;paramentro&gt;...&lt;parametro&gt;|...|&lt;comando&gt;...[&lt; &lt;entrada&gt;][[1&gt;|&gt;|&gt;&gt;][2&gt;]&lt;saida&gt;|&amp;&gt;&lt;saida&gt;][&amp;] </p>
+</div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a12234f6cd36b61af4b50c94a179422c1"></a><!-- doxytag: member="Parser::Parser" ref="a12234f6cd36b61af4b50c94a179422c1" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -96,6 +102,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<dl class="return"><dt><b>Returns:</b></dt><dd>Verdadeiro caso esteja em uma nova linha de comando (nao necessariamente endl, mas fim da pipeline por &amp; </dd></dl>
 
 </div>
 </div>
@@ -112,6 +119,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<dl class="return"><dt><b>Returns:</b></dt><dd>Le e interpreta uma linha de comando dada pelo usuario no stdin </dd></dl>
 
 </div>
 </div>
@@ -134,7 +142,7 @@ Public Member Functions</h2></td></tr>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sat Nov 12 2011 21:23:02 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sat Nov 12 2011 21:26:31 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>
