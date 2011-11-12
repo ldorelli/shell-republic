@@ -20,7 +20,7 @@ Command::~Command() {
 
 const char** Command::getExecv() {
     if (!execvector) {
-        int size = parameters.size();
+        int size = (int)parameters.size();
         execvector = new const char*[size+1];
         execvector[size] = 0;
         for (int i = 0; i < size; i++) {

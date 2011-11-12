@@ -11,7 +11,7 @@ std::string Parser::nextWord() {
     bool specialChar = false; //It read '\\'
     bool insideComma = false;
     
-    int lsize = line.size();
+    unsigned lsize = (unsigned)line.size();
     for (; index < lsize; index++) {
         char ch = line[index];
         if (specialChar) specialChar = false, word += ch;
@@ -45,7 +45,6 @@ CommandLine* Parser::readCommandLine () {
             std::cin.clear();
         }
         std::getline(std::cin, line);
-        std::cout << "lendo\n";
 //        Solucao parcial: 
 //        sigprocmask(SIG_SETMASK, &orig_mask, 0);
     }

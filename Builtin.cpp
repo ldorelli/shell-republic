@@ -53,7 +53,7 @@ int JobsCommand::_run(const char * args[], Executor * executor) {
 int FgCommand::_run(const char * args[], Executor * executor) {
     std::list<Executor::Job> *lj = executor->getJobs();
     std::list<Executor::Job>::iterator itA, itB;
-    int jobid;
+    unsigned jobid;
     
     if (args[1] == 0) jobid = executor->getLastForeground();
     else sscanf(args[1], "%%%d", &jobid);
@@ -64,14 +64,17 @@ int FgCommand::_run(const char * args[], Executor * executor) {
         if (itA->jobid == jobid) {
             
             executor->setLastForeground(itA->jobid);
-            executor->setForeground(itA->pid);
-            kill(itA->groupid, SIGCONT);
-            
+            executor->setForeground(itA->groupid);
             tcsetpgrp(0, itA->groupid);
-            
-            waitpid(itA->groupid, 0, 0);
-            
-            executor->cleanUp();
+            kill(itA->groupid, SIGCONT);
+			executor->cleanUp();
+			int status;
+            do{
+				waitpid(-itA->groupid, &status, WUNTRACED | WCONTINUED);
+			}while(!WIFEXITED(status) && !WIFSIGNALED(status) && !WIFSTOPPED(status));
+            executor->setForeground(getpid());
+			tcsetpgrp(0, getpid());
+			executor->cleanUp();
             break;
         }
     }
@@ -82,7 +85,7 @@ int FgCommand::_run(const char * args[], Executor * executor) {
 int BgCommand::_run(const char * args[], Executor * executor) {
     std::list<Executor::Job> *lj = executor->getJobs();
     std::list<Executor::Job>::iterator itA, itB;
-    int jobid;
+    unsigned jobid;
     
     if (args[1] == 0) jobid = executor->getLastForeground();
     else sscanf(args[1], "%%%d", &jobid);
@@ -107,7 +110,7 @@ int BgCommand::_run(const char * args[], Executor * executor) {
 int KillCommand::_run(const char * args[], Executor * executor) {
     std::list<Executor::Job> *lj = executor->getJobs();
     std::list<Executor::Job>::iterator itA, itB;
-    int jobid;
+    unsigned jobid;
     
     if (args[1] == 0) return 0;
     else sscanf(args[1], "%%%d", &jobid);

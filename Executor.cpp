@@ -126,19 +126,19 @@ int Executor::run(Command* command, int & firstPipedPid, bool isBackground, std:
     } else {
         it->second->run(execvector, this);
     }
+	return 0;
 }
 
 void Executor::run(CommandLine* cmdLine, std::map<std::string, Builtin*>& bCommands) {
     int fdIn = 0;
     int fdOut = 1;
-    int fdErr = 2;
     int pp[2];
     int last;
     int firstPipedPid = 0;
     Command * command;
 	pp[0] = 0;
 	pp[1] = 1;
-    while (command = cmdLine->next()) {
+    while ((command = cmdLine->next())) {
 		if (cmdLine->hasNext()){
 			pipe(pp);
 			fdOut = pp[1];
@@ -199,8 +199,8 @@ void Executor::cleanUp () {
 
 void Executor::setForeground (int pid) {foreground = pid; }
 
-int Executor::getLastForeground () { return lastForeground; }
-void Executor::setLastForeground(int jid) { lastForeground = jid;}
+unsigned Executor::getLastForeground () { return lastForeground; }
+void Executor::setLastForeground(unsigned jid) { lastForeground = jid;}
 
 Executor::Executor() : lastForeground(0) { foreground = getpid(); }
 Executor::Job::Job() : stopped(false), dead(false) {}

@@ -18,7 +18,7 @@ public:
     struct Job {
         std::string name;
         pid_t       pid;
-        unsigned    jobid;
+        unsigned	jobid;
         unsigned    groupid;
         bool        stopped;
         bool        dead;
@@ -29,15 +29,15 @@ private:
     std::list<Job> jobs;
     int run(Command* command, int & firstPipedPid, bool isBackground, std::map<std::string, Builtin*>&,
             int fdIn = 0, int fdOut = 1, int fdErr = 2);
-    int foreground;
-    int lastForeground;
+    unsigned foreground;
+    unsigned lastForeground;
 public:
     Executor();
     void run(CommandLine* commandLine, std::map<std::string, Builtin*>&);
     void cleanUp ();
     void setForeground( int pid );
-    int getLastForeground();
-    void setLastForeground(int pid);
+    unsigned getLastForeground();
+    void setLastForeground(unsigned pid);
     std::list<Job> * getJobs();
 };
 
