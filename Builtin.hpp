@@ -29,7 +29,8 @@ public:
 
 /**
  * \brief Classe que implementa o comando cd.
- * 		Sintaxe: cd <diretorio>
+ * 		
+ * Sintaxe: cd <diretorio>
  */
 class CdCommand : public Builtin {
     int _run(const char*[], Executor*);
@@ -37,7 +38,8 @@ class CdCommand : public Builtin {
 
 /**
  *	\brief Classe que implementa o comando pwd.
- *		Sintaxe: pwd			
+ *
+ * Sintaxe: pwd			
  */
 class PwdCommand : public Builtin {
     int _run(const char*[], Executor*);
@@ -46,9 +48,9 @@ class PwdCommand : public Builtin {
 
 /**
  *	\brief Classe que implementa o comando bg.
- *		Sintaxe: bg %<JOBID> | 	bg
- *	
- * 	Se o comando for chamado sem o JOBID, sera utilizado o job mais recentemente aberto,
+ *
+ *  Sintaxe: bg %<JOBID> | 	bg\n
+ *	Se o comando for chamado sem o JOBID, sera utilizado o job mais recentemente aberto,
  *		colocado em foreground ou background ou, caso ja tenha sido fechado, o mais antigo aberto.
  *		
  */
@@ -58,9 +60,9 @@ class BgCommand : public Builtin {
 
 /**
  *	\brief Classe que implementa o comando fg.
- *		Sintaxe: fg %<JOBID> | 	fg
- *	
- * 	Se o comando for chamado sem o JOBID, sera utilizado o job mais recentemente aberto,
+ *
+ *  Sintaxe: fg %<JOBID> | 	fg \n
+ *		Se o comando for chamado sem o JOBID, sera utilizado o job mais recentemente aberto,
  *		colocado em foreground ou background ou, caso ja tenha sido fechado, o mais antigo aberto.
  *		
  */
@@ -70,7 +72,8 @@ class FgCommand : public Builtin {
 
 /**
  *	\brief Classe que implementa o comando jobs.
- *		Sintaxe: jobs
+ *	
+ * Sintaxe: jobs
  */
 class JobsCommand : public Builtin {
     int _run(const char*[], Executor*);
@@ -79,7 +82,8 @@ class JobsCommand : public Builtin {
 
 /**
  *	\brief Classe que implementa o comando exit.
- *		Sintaxe: exit, quit
+ *
+ * Sintaxe: exit, quit
  */
 class ExitCommand : public Builtin {
     int _run(const char*[], Executor*);
@@ -87,7 +91,8 @@ class ExitCommand : public Builtin {
 
 /**
  *	\brief Classe que implementa o comando kill.
- *		Sintaxe: kill %<JOBID>
+ *
+ *  Sintaxe: kill %<JOBID>
  *
  */
 class KillCommand : public Builtin {

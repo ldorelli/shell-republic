@@ -1,9 +1,11 @@
 #ifndef Handlers_HPP
 #define Handlers_HPP
-
+/**
+ *	\brief Namespace relacionado as funcoes que manipulam interrupcoes de software.
+ */
 namespace handlers {
 	/**
-	 * \brief Handler para SIGCHLD.
+	 * \brief Handler para o sinal SIGCHLD.
 	 * 		Levanta uma flag dizendo que um sinal vindo de um provesso filho foi lancado.
 	 *
 	 */

@@ -7,7 +7,7 @@
 /**
  * \brief Utilizado para converter a entrada do usuario em uma CommandLine
  *
- *        A linha de usuario deve ter a seguinte forma
+ *        A linha de usuario deve ter a seguinte forma\n
  *        <comando><paramentro>...<parametro>|...|<comando>...[< <entrada>][[1>|>|>>][2>]<saida>|&><saida>][&]
  */
 class Parser {
