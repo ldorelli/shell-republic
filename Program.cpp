@@ -4,6 +4,8 @@
 #include "MyTypo.hpp"
 #include "Executor.hpp"
 #include <signal.h>
+#include "Handlers.hpp"
+
 
 Executor * executorPointer;
 
@@ -19,6 +21,18 @@ int main (int argc, char *argv[]) {
     signal (SIGTTOU, SIG_IGN);
     signal (SIGCHLD, SIG_IGN);
     
+    struct sigaction newAction;
+    
+    newAction.sa_handler = handlers::sigChildHandler;
+    sigemptyset(&newAction.sa_mask);
+    newAction.sa_flags = 0;
+    sigaction (SIGCHLD, &newAction, 0);
+    
+    newAction.sa_handler = handlers::sigTStpHandler;
+    sigemptyset(&newAction.sa_mask);
+    newAction.sa_flags = 0;
+    sigaction (SIGTSTP, &newAction, 0);
+    
     tcsetpgrp(0, getpid());
     
     Parser parser;
@@ -28,7 +42,9 @@ int main (int argc, char *argv[]) {
     while (true) {
         if (parser.newLine()) std::cout << presentation;
         CommandLine *cl = parser.readCommandLine();
-        executor.run(cl);
+        executor.cleanUp();
+        if (cl)
+            executor.run(cl);
         delete cl;
     }
     return 0;

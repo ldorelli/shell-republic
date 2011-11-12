@@ -29,6 +29,7 @@ CommandLine* Parser::readCommandLine () {
         index = 0;
         std::getline(std::cin, line);
     }
+    if (line.empty()) return 0;
 
     std::string in;
     std::string out;

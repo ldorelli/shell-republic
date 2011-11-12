@@ -13,9 +13,11 @@ class Executor {
 public:
     struct Job {
         std::string name;
-        pid_t pid;
-        unsigned jobid;
-        bool    stopped;
+        pid_t       pid;
+        unsigned    jobid;
+        unsigned    groupid;
+        bool        stopped;
+        bool        dead;
         Job ();
     };
 
@@ -23,8 +25,11 @@ private:
     std::list<Job> jobs;
     int run(Command* command, int & firstPipedPid, bool isBackground,
             int fdIn = 0, int fdOut = 1, int fdErr = 2);
+    int foreground;
 public:
+    Executor();
     void run(CommandLine* commandLine);
+    void cleanUp ();
     std::list<Job> & getJobs();
 };
 

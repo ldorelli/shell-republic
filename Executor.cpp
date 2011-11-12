@@ -3,11 +3,14 @@
 #include <fcntl.h>
 #include <cstdio>
 #include <sys/stat.h>
+#include <sys/wait.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <iostream>
 #include <cstdlib>
 #include <utility>
+#include "MyTypo.hpp"
+#include "Handlers.hpp"
 
 std::list<Executor::Job>& Executor::getJobs() {
     return jobs;
@@ -20,7 +23,12 @@ int Executor::run(Command* command, int & firstPipedPid, bool isBackground,
     if (!jobs.empty()) {
         job.jobid = jobs.rbegin()->jobid + 1;
     } else job.jobid = 1;
+    
     job.name = execvector[0];
+    for (int i = 1; execvector[i]; i++) {
+        job.name += ' ';
+        job.name += execvector[i];
+    }
     
     std::string in, out, err;
     bool outap, errap;
@@ -91,9 +99,17 @@ int Executor::run(Command* command, int & firstPipedPid, bool isBackground,
     } else {
         if (!firstPipedPid) firstPipedPid = pid;
         setpgid(pid, firstPipedPid);
-        if (!isBackground)
-            tcsetpgrp(0, pid);
+        job.groupid = firstPipedPid;
         job.pid = pid;
+        if (!isBackground) {
+            foreground = firstPipedPid;
+            tcsetpgrp(0, pid);
+        }
+        else {
+            MyTypo myt(MyTypo::NORMAL, MyTypo::PURPLE);
+            std::cout << myt << "[" << job.jobid << "] " << myt <<
+            job.pid << std::endl;
+        }
         jobs.push_back(job);
         /* up */
     }
@@ -115,16 +131,44 @@ void Executor::run(CommandLine* cmdLine) {
 			pipe(pp);
 			fdOut = pp[1];
 		}else fdOut = 1;
-        last = run(command, firstPipedPid, cmdLine->isBackground(), fdIn, fdOut);
+        last = run(command, firstPipedPid, cmdLine->isBackground(),
+                   fdIn, fdOut);
     	if(fdIn!=0) close(fdIn);
 		if(fdOut!=1) close(fdOut);
 		fdIn = pp[0];
 	}    
     if(fdIn!=0) close(fdIn);
-	if (!cmdLine->isBackground()) {
-    	while( wait(0)>=0 );
-	}
+//	if (!cmdLine->isBackground()) {
+//    	while( wait(0)>=0 );
+//	}
 }
 
-Executor::Job::Job() : stopped(false){}
+void Executor::cleanUp () {
+    while (handlers::getDeathStatus()) {
+        handlers::setDeathStatusFalse();
+        std::list<Job>::iterator itA, itB;
+        itA = jobs.begin();
+        itB = jobs.end();
+        
+//        while (int who = waitpid(0, &status, WNOHANG)) {
+//            
+//        }
+        
+        while (itA != itB) {
+            int status;
+            if (waitpid(itA->pid, &status, WNOHANG)) {
+                std::cerr << "YUHHUUU\n";
+                if (!itA->groupid == foreground) {
+                    tcsetpgrp(0, getpid());
+                    foreground = 0;
+                    std::cerr << "passei por aqui ! \n";
+                }
+                itA = jobs.erase(itA);
+            } else itA++;
+        }
+    }
+}
+
+Executor::Executor() : foreground(0) {}
+Executor::Job::Job() : stopped(false), dead(false) {}
 
