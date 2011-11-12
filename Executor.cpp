@@ -9,6 +9,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <utility>
+#include <termios.h>
 #include "MyTypo.hpp"
 #include "Handlers.hpp"
 
@@ -104,6 +105,7 @@ int Executor::run(Command* command, int & firstPipedPid, bool isBackground,
         if (!isBackground) {
             foreground = firstPipedPid;
             tcsetpgrp(0, pid);
+            tcsetattr(0, TCSADRAIN, 0);
         }
         else {
             MyTypo myt(MyTypo::NORMAL, MyTypo::PURPLE);
@@ -138,9 +140,11 @@ void Executor::run(CommandLine* cmdLine) {
 		fdIn = pp[0];
 	}    
     if(fdIn!=0) close(fdIn);
-//	if (!cmdLine->isBackground()) {
-//    	while( wait(0)>=0 );
-//	}
+    
+//    TODO: tah errado 
+	if (!cmdLine->isBackground()) {
+    	while( wait(0)>=0 );
+	}
 }
 
 void Executor::cleanUp () {
@@ -158,10 +162,13 @@ void Executor::cleanUp () {
             int status;
             if (waitpid(itA->pid, &status, WNOHANG)) {
                 std::cerr << "YUHHUUU\n";
-                if (!itA->groupid == foreground) {
+                std::cerr << foreground << " - " << itA->groupid << '\n';
+                if (itA->groupid == foreground) {
                     tcsetpgrp(0, getpid());
+                    tcsetattr(0, TCSADRAIN, &myTermios);
                     foreground = 0;
                     std::cerr << "passei por aqui ! \n";
+                    std::cerr << tcgetpgrp(0) << std::endl;
                 }
                 itA = jobs.erase(itA);
             } else itA++;
@@ -169,6 +176,6 @@ void Executor::cleanUp () {
     }
 }
 
-Executor::Executor() : foreground(0) {}
+Executor::Executor() : foreground(0) { tcgetattr(0, &myTermios); }
 Executor::Job::Job() : stopped(false), dead(false) {}
 

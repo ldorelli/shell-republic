@@ -12,7 +12,8 @@ Executor * executorPointer;
 int main (int argc, char *argv[]) {
     
     setpgid(getpid(), getpid());
-  
+    
+    std::cout << getpid() << std::endl;
     
     signal (SIGINT, SIG_IGN);
     signal (SIGQUIT, SIG_IGN);
@@ -46,6 +47,6 @@ int main (int argc, char *argv[]) {
         if (cl)
             executor.run(cl);
         delete cl;
-    }
+    } else tcsetpgrp(STDIN_FILENO, getpid());
     return 0;
 }

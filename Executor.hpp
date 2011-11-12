@@ -7,6 +7,7 @@
 #include <sys/types.h>
 #include "Command.hpp"
 #include "CommandLine.hpp"
+#include <termios.h>
 
 
 class Executor {
@@ -26,6 +27,7 @@ private:
     int run(Command* command, int & firstPipedPid, bool isBackground,
             int fdIn = 0, int fdOut = 1, int fdErr = 2);
     int foreground;
+    struct termios myTermios;
 public:
     Executor();
     void run(CommandLine* commandLine);
