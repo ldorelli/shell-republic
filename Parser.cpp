@@ -45,6 +45,7 @@ CommandLine* Parser::readCommandLine () {
             std::cin.clear();
         }
         std::getline(std::cin, line);
+        std::cout << "lendo\n";
 //        Solucao parcial: 
 //        sigprocmask(SIG_SETMASK, &orig_mask, 0);
     }
