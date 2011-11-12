@@ -16,6 +16,7 @@ std::list<Executor::Job>* Executor::getJobs() {
     return &jobs;
 }
 
+
 int Executor::run(Command* command, int & firstPipedPid, bool isBackground, std::map<std::string, Builtin*>& bCommands,
                   int fdIn, int fdOut, int fdErr){ 
     const char ** execvector = command->getExecv();
