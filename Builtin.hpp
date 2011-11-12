@@ -18,6 +18,10 @@ public:
 	 *	\param executor Pointeiro para uma instancia de Executor.
 	 */
     void run(const char*args[], Executor *executor);
+
+	/**
+	 *	\brief Se o comando pode ser executado como um proceso independente.
+	 */
     virtual bool forkable();
 };
 
@@ -25,6 +29,7 @@ public:
 
 /**
  * \brief Classe que implementa o comando cd.
+ * 		Sintaxe: cd <diretorio>
  */
 class CdCommand : public Builtin {
     int _run(const char*[], Executor*);
@@ -32,6 +37,7 @@ class CdCommand : public Builtin {
 
 /**
  *	\brief Classe que implementa o comando pwd.
+ *		Sintaxe: pwd			
  */
 class PwdCommand : public Builtin {
     int _run(const char*[], Executor*);
@@ -40,6 +46,11 @@ class PwdCommand : public Builtin {
 
 /**
  *	\brief Classe que implementa o comando bg.
+ *		Sintaxe: bg %<JOBID> | 	bg
+ *	
+ * 	Se o comando for chamado sem o JOBID, sera utilizado o job mais recentemente aberto,
+ *		colocado em foreground ou background ou, caso ja tenha sido fechado, o mais antigo aberto.
+ *		
  */
 class BgCommand : public Builtin {
     int _run(const char*[], Executor*);
@@ -47,6 +58,11 @@ class BgCommand : public Builtin {
 
 /**
  *	\brief Classe que implementa o comando fg.
+ *		Sintaxe: fg %<JOBID> | 	fg
+ *	
+ * 	Se o comando for chamado sem o JOBID, sera utilizado o job mais recentemente aberto,
+ *		colocado em foreground ou background ou, caso ja tenha sido fechado, o mais antigo aberto.
+ *		
  */
 class FgCommand : public Builtin {
     int _run(const char*[], Executor*);
@@ -54,6 +70,7 @@ class FgCommand : public Builtin {
 
 /**
  *	\brief Classe que implementa o comando jobs.
+ *		Sintaxe: jobs
  */
 class JobsCommand : public Builtin {
     int _run(const char*[], Executor*);
@@ -62,6 +79,7 @@ class JobsCommand : public Builtin {
 
 /**
  *	\brief Classe que implementa o comando exit.
+ *		Sintaxe: exit, quit
  */
 class ExitCommand : public Builtin {
     int _run(const char*[], Executor*);
@@ -69,6 +87,8 @@ class ExitCommand : public Builtin {
 
 /**
  *	\brief Classe que implementa o comando kill.
+ *		Sintaxe: kill %<JOBID>
+ *
  */
 class KillCommand : public Builtin {
     int _run(const char*[], Executor*);

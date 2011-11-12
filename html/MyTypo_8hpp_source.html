@@ -54,72 +54,73 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00003"></a>00003 <span class="preprocessor"></span>
 <a name="l00004"></a>00004 <span class="preprocessor">#include &lt;iostream&gt;</span>
 <a name="l00005"></a>00005 
-<a name="l00006"></a><a class="code" href="classMyTypo.html">00006</a> <span class="keyword">class </span><a class="code" href="classMyTypo.html">MyTypo</a> {
-<a name="l00007"></a>00007     
-<a name="l00008"></a>00008 <span class="keyword">private</span>:
-<a name="l00009"></a>00009     
-<a name="l00010"></a>00010     <span class="keywordtype">int</span> style;
-<a name="l00011"></a>00011     <span class="keywordtype">int</span> foreground;
-<a name="l00012"></a>00012     <span class="keywordtype">int</span> background;
-<a name="l00013"></a>00013     <span class="keywordtype">bool</span> opened;
+<a name="l00006"></a>00006 
+<a name="l00013"></a><a class="code" href="classMyTypo.html">00013</a> <span class="keyword">class </span><a class="code" href="classMyTypo.html" title="Firulas.">MyTypo</a> {
 <a name="l00014"></a>00014     
-<a name="l00015"></a>00015 <span class="keyword">public</span>:
+<a name="l00015"></a>00015 <span class="keyword">private</span>:
 <a name="l00016"></a>00016     
-<a name="l00017"></a>00017     <span class="keywordtype">void</span> <a class="code" href="classMyTypo.html#a3422166dfc3911a36c32271e0434587d">set_foreground</a> (<span class="keywordtype">int</span> color);
-<a name="l00018"></a>00018     <span class="keywordtype">void</span> <a class="code" href="classMyTypo.html#a325589499eb8e5c4b52355011f7b9cf3">set_background</a> (<span class="keywordtype">int</span> color);
-<a name="l00019"></a>00019     <span class="keywordtype">void</span> <a class="code" href="classMyTypo.html#a94dc39fef3ca57dc956deda92514c648">set_style</a>      (<span class="keywordtype">int</span> color);
-<a name="l00020"></a>00020     
-<a name="l00021"></a>00021     <span class="keywordtype">int</span> <a class="code" href="classMyTypo.html#a554372a4548dda7c157d69fe0651a23f">get_foreground</a> (<span class="keywordtype">void</span>);
-<a name="l00022"></a>00022     <span class="keywordtype">int</span> <a class="code" href="classMyTypo.html#ad935060c132f772a2a1239bc6426d5de">get_background</a> (<span class="keywordtype">void</span>);
-<a name="l00023"></a>00023     <span class="keywordtype">int</span> <a class="code" href="classMyTypo.html#af181779fdfb0eb793136408e2a4fec94">get_style</a>      (<span class="keywordtype">void</span>);
-<a name="l00024"></a>00024     <span class="keywordtype">bool</span> <a class="code" href="classMyTypo.html#ad44b40659d3e5cf17f22677264ca6ab9">get_opened</a>    (<span class="keywordtype">void</span>);
-<a name="l00025"></a>00025     
-<a name="l00026"></a>00026     <a class="code" href="classMyTypo.html#a7ab56324aa7eb1bf6efca62d14d07bee">MyTypo</a> (<span class="keywordtype">int</span> style = <a class="code" href="classMyTypo.html#a8def2c649b389845fc9ef0425d6ba3f3a77b0bcc2d2ad397aaf217b9925311286">NORMAL</a>, <span class="keywordtype">int</span> foreground = <a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaa5d485cc852fd8925db5f58724949ed7d">BLACK</a>, <span class="keywordtype">int</span> background = <a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8ab5db6d6b3a486ef6d773c3c04c1281b4">B_TRANSPARENT</a>);
+<a name="l00017"></a>00017     <span class="keywordtype">int</span> style;
+<a name="l00018"></a>00018     <span class="keywordtype">int</span> foreground;
+<a name="l00019"></a>00019     <span class="keywordtype">int</span> background;
+<a name="l00020"></a>00020     <span class="keywordtype">bool</span> opened;
+<a name="l00021"></a>00021     
+<a name="l00022"></a>00022 <span class="keyword">public</span>:
+<a name="l00023"></a>00023     
+<a name="l00024"></a>00024     <span class="keywordtype">void</span> <a class="code" href="classMyTypo.html#a3422166dfc3911a36c32271e0434587d">set_foreground</a> (<span class="keywordtype">int</span> color);
+<a name="l00025"></a>00025     <span class="keywordtype">void</span> <a class="code" href="classMyTypo.html#a325589499eb8e5c4b52355011f7b9cf3">set_background</a> (<span class="keywordtype">int</span> color);
+<a name="l00026"></a>00026     <span class="keywordtype">void</span> <a class="code" href="classMyTypo.html#a94dc39fef3ca57dc956deda92514c648">set_style</a>      (<span class="keywordtype">int</span> color);
 <a name="l00027"></a>00027     
-<a name="l00028"></a>00028     <span class="keywordtype">void</span> <a class="code" href="classMyTypo.html#ac0cf15a492908e3efdc6b57e1eff4390">toogleOpened</a> (<span class="keywordtype">void</span>);
-<a name="l00029"></a>00029     
-<a name="l00030"></a>00030     <span class="keywordtype">void</span> <a class="code" href="classMyTypo.html#ab1f48a8f65a17b5240c393af75ef2657">setParameters</a> (<span class="keywordtype">int</span> style = <a class="code" href="classMyTypo.html#a8def2c649b389845fc9ef0425d6ba3f3a77b0bcc2d2ad397aaf217b9925311286">NORMAL</a>, <span class="keywordtype">int</span> foreground = <a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaa5d485cc852fd8925db5f58724949ed7d">BLACK</a>, <span class="keywordtype">int</span> background = <a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8ab5db6d6b3a486ef6d773c3c04c1281b4">B_TRANSPARENT</a>);
-<a name="l00031"></a>00031     
-<a name="l00032"></a>00032     std::ostream&amp; <a class="code" href="classMyTypo.html#ae352299f62ef344e98f10a900546c83c">openTag</a> (std::ostream&amp; ost);
-<a name="l00033"></a>00033     
-<a name="l00034"></a>00034     std::ostream&amp; <a class="code" href="classMyTypo.html#a6572b9b25e66990a26308e6bbc9ec301">closeTag</a> (std::ostream&amp; ost);
-<a name="l00035"></a>00035     
-<a name="l00036"></a><a class="code" href="classMyTypo.html#a8def2c649b389845fc9ef0425d6ba3f3">00036</a>     <span class="keyword">enum</span> <a class="code" href="classMyTypo.html#a8def2c649b389845fc9ef0425d6ba3f3">Style</a> {
-<a name="l00037"></a><a class="code" href="classMyTypo.html#a8def2c649b389845fc9ef0425d6ba3f3a77b0bcc2d2ad397aaf217b9925311286">00037</a>         <a class="code" href="classMyTypo.html#a8def2c649b389845fc9ef0425d6ba3f3a77b0bcc2d2ad397aaf217b9925311286">NORMAL</a> = 0,
-<a name="l00038"></a><a class="code" href="classMyTypo.html#a8def2c649b389845fc9ef0425d6ba3f3a7b77c3671053b7cecb4f5f62d5f3dacd">00038</a>         <a class="code" href="classMyTypo.html#a8def2c649b389845fc9ef0425d6ba3f3a7b77c3671053b7cecb4f5f62d5f3dacd">BOLD</a>,
-<a name="l00039"></a><a class="code" href="classMyTypo.html#a8def2c649b389845fc9ef0425d6ba3f3a092275401d9e91f117091f7f830c4537">00039</a>         <a class="code" href="classMyTypo.html#a8def2c649b389845fc9ef0425d6ba3f3a092275401d9e91f117091f7f830c4537">UNDER</a> = 4,
-<a name="l00040"></a><a class="code" href="classMyTypo.html#a8def2c649b389845fc9ef0425d6ba3f3aeba436648705fd91802eca94dd774bef">00040</a>         <a class="code" href="classMyTypo.html#a8def2c649b389845fc9ef0425d6ba3f3aeba436648705fd91802eca94dd774bef">BLINK</a>,
-<a name="l00041"></a><a class="code" href="classMyTypo.html#a8def2c649b389845fc9ef0425d6ba3f3a072b22b51d23b6ba5507658851b1508a">00041</a>         <a class="code" href="classMyTypo.html#a8def2c649b389845fc9ef0425d6ba3f3a072b22b51d23b6ba5507658851b1508a">INVERT</a> = 7
-<a name="l00042"></a>00042     };
-<a name="l00043"></a>00043     
-<a name="l00044"></a><a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708ea">00044</a>     <span class="keyword">enum</span> <a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708ea">Foreground</a> {
-<a name="l00045"></a><a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaa5d485cc852fd8925db5f58724949ed7d">00045</a>         <a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaa5d485cc852fd8925db5f58724949ed7d">BLACK</a> = 30,
-<a name="l00046"></a><a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaae9a6714a38c1570a628c92d992b8886a">00046</a>         <a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaae9a6714a38c1570a628c92d992b8886a">RED</a>,
-<a name="l00047"></a><a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaac0090bdb54450325945e1eec5f3240df">00047</a>         <a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaac0090bdb54450325945e1eec5f3240df">GREEN</a>,
-<a name="l00048"></a><a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaa3980d41699961553b6365178968e1235">00048</a>         <a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaa3980d41699961553b6365178968e1235">BROWN</a>,
-<a name="l00049"></a><a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaae3d9ddbcc3cceb11912943b7647b3842">00049</a>         <a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaae3d9ddbcc3cceb11912943b7647b3842">BLUE</a>,
-<a name="l00050"></a><a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaa49a268a91b8ed1b28ea8518bed685029">00050</a>         <a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaa49a268a91b8ed1b28ea8518bed685029">PURPLE</a>,
-<a name="l00051"></a><a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaa20a754710244898038b406234e73682e">00051</a>         <a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaa20a754710244898038b406234e73682e">CYAN</a>,
-<a name="l00052"></a><a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaaa48d0f298f2b7be62cd7dc84d6b7a999">00052</a>         <a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaaa48d0f298f2b7be62cd7dc84d6b7a999">GRAY</a>
-<a name="l00053"></a>00053     };
-<a name="l00054"></a>00054     
-<a name="l00055"></a><a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8">00055</a>     <span class="keyword">enum</span> <a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8">Background</a> {
-<a name="l00056"></a><a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8ab5db6d6b3a486ef6d773c3c04c1281b4">00056</a>         <a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8ab5db6d6b3a486ef6d773c3c04c1281b4">B_TRANSPARENT</a> = -1,
-<a name="l00057"></a><a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8ac2e0d75a46d7044e594d4f89cb76b4ca">00057</a>         <a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8ac2e0d75a46d7044e594d4f89cb76b4ca">B_BLACK</a> = 40,
-<a name="l00058"></a><a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8aeb1941bfc2f16a35302f10000684a6ef">00058</a>         <a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8aeb1941bfc2f16a35302f10000684a6ef">B_RED</a>,
-<a name="l00059"></a><a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8aac6076a603ab6c8be9a700e115c01453">00059</a>         <a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8aac6076a603ab6c8be9a700e115c01453">B_GREEN</a>,
-<a name="l00060"></a><a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8afd8a2faa10bc6f4f68066e8a8064ec3f">00060</a>         <a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8afd8a2faa10bc6f4f68066e8a8064ec3f">B_BROWN</a>,
-<a name="l00061"></a><a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8a08b6e71d66570f7a3e34cc7995e85317">00061</a>         <a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8a08b6e71d66570f7a3e34cc7995e85317">B_BLUE</a>,
-<a name="l00062"></a><a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8a4d7b53c84bb3c21ca6adae139dca95de">00062</a>         <a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8a4d7b53c84bb3c21ca6adae139dca95de">B_PURPLE</a>,
-<a name="l00063"></a><a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8a6762080d090818122cabaf479be290a6">00063</a>         <a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8a6762080d090818122cabaf479be290a6">B_CYAN</a>,
-<a name="l00064"></a><a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8a85f06fb2e3d8b757294edc6eecabf43e">00064</a>         <a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8a85f06fb2e3d8b757294edc6eecabf43e">B_GRAY</a>
-<a name="l00065"></a>00065     };
-<a name="l00066"></a>00066     
-<a name="l00067"></a>00067 };
-<a name="l00068"></a>00068 
-<a name="l00069"></a>00069 std::ostream&amp; <a class="code" href="MyTypo_8cpp.html#a9dd4ca6f7c239dd6dcc2db34f2fc02c1">operator&lt;&lt; </a>(std::ostream&amp; ost, <a class="code" href="classMyTypo.html">MyTypo</a>&amp; mt);
-<a name="l00070"></a>00070 
-<a name="l00071"></a>00071 <span class="preprocessor">#endif</span>
+<a name="l00028"></a>00028     <span class="keywordtype">int</span> <a class="code" href="classMyTypo.html#a554372a4548dda7c157d69fe0651a23f">get_foreground</a> (<span class="keywordtype">void</span>);
+<a name="l00029"></a>00029     <span class="keywordtype">int</span> <a class="code" href="classMyTypo.html#ad935060c132f772a2a1239bc6426d5de">get_background</a> (<span class="keywordtype">void</span>);
+<a name="l00030"></a>00030     <span class="keywordtype">int</span> <a class="code" href="classMyTypo.html#af181779fdfb0eb793136408e2a4fec94">get_style</a>      (<span class="keywordtype">void</span>);
+<a name="l00031"></a>00031     <span class="keywordtype">bool</span> <a class="code" href="classMyTypo.html#ad44b40659d3e5cf17f22677264ca6ab9">get_opened</a>    (<span class="keywordtype">void</span>);
+<a name="l00032"></a>00032     
+<a name="l00033"></a>00033     <a class="code" href="classMyTypo.html#a7ab56324aa7eb1bf6efca62d14d07bee">MyTypo</a> (<span class="keywordtype">int</span> style = <a class="code" href="classMyTypo.html#a8def2c649b389845fc9ef0425d6ba3f3a77b0bcc2d2ad397aaf217b9925311286">NORMAL</a>, <span class="keywordtype">int</span> foreground = <a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaa5d485cc852fd8925db5f58724949ed7d">BLACK</a>, <span class="keywordtype">int</span> background = <a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8ab5db6d6b3a486ef6d773c3c04c1281b4">B_TRANSPARENT</a>);
+<a name="l00034"></a>00034     
+<a name="l00035"></a>00035     <span class="keywordtype">void</span> <a class="code" href="classMyTypo.html#ac0cf15a492908e3efdc6b57e1eff4390">toogleOpened</a> (<span class="keywordtype">void</span>);
+<a name="l00036"></a>00036     
+<a name="l00037"></a>00037     <span class="keywordtype">void</span> <a class="code" href="classMyTypo.html#ab1f48a8f65a17b5240c393af75ef2657">setParameters</a> (<span class="keywordtype">int</span> style = <a class="code" href="classMyTypo.html#a8def2c649b389845fc9ef0425d6ba3f3a77b0bcc2d2ad397aaf217b9925311286">NORMAL</a>, <span class="keywordtype">int</span> foreground = <a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaa5d485cc852fd8925db5f58724949ed7d">BLACK</a>, <span class="keywordtype">int</span> background = <a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8ab5db6d6b3a486ef6d773c3c04c1281b4">B_TRANSPARENT</a>);
+<a name="l00038"></a>00038     
+<a name="l00039"></a>00039     std::ostream&amp; <a class="code" href="classMyTypo.html#ae352299f62ef344e98f10a900546c83c">openTag</a> (std::ostream&amp; ost);
+<a name="l00040"></a>00040     
+<a name="l00041"></a>00041     std::ostream&amp; <a class="code" href="classMyTypo.html#a6572b9b25e66990a26308e6bbc9ec301">closeTag</a> (std::ostream&amp; ost);
+<a name="l00042"></a>00042     
+<a name="l00043"></a><a class="code" href="classMyTypo.html#a8def2c649b389845fc9ef0425d6ba3f3">00043</a>     <span class="keyword">enum</span> <a class="code" href="classMyTypo.html#a8def2c649b389845fc9ef0425d6ba3f3">Style</a> {
+<a name="l00044"></a><a class="code" href="classMyTypo.html#a8def2c649b389845fc9ef0425d6ba3f3a77b0bcc2d2ad397aaf217b9925311286">00044</a>         <a class="code" href="classMyTypo.html#a8def2c649b389845fc9ef0425d6ba3f3a77b0bcc2d2ad397aaf217b9925311286">NORMAL</a> = 0,
+<a name="l00045"></a><a class="code" href="classMyTypo.html#a8def2c649b389845fc9ef0425d6ba3f3a7b77c3671053b7cecb4f5f62d5f3dacd">00045</a>         <a class="code" href="classMyTypo.html#a8def2c649b389845fc9ef0425d6ba3f3a7b77c3671053b7cecb4f5f62d5f3dacd">BOLD</a>,
+<a name="l00046"></a><a class="code" href="classMyTypo.html#a8def2c649b389845fc9ef0425d6ba3f3a092275401d9e91f117091f7f830c4537">00046</a>         <a class="code" href="classMyTypo.html#a8def2c649b389845fc9ef0425d6ba3f3a092275401d9e91f117091f7f830c4537">UNDER</a> = 4,
+<a name="l00047"></a><a class="code" href="classMyTypo.html#a8def2c649b389845fc9ef0425d6ba3f3aeba436648705fd91802eca94dd774bef">00047</a>         <a class="code" href="classMyTypo.html#a8def2c649b389845fc9ef0425d6ba3f3aeba436648705fd91802eca94dd774bef">BLINK</a>,
+<a name="l00048"></a><a class="code" href="classMyTypo.html#a8def2c649b389845fc9ef0425d6ba3f3a072b22b51d23b6ba5507658851b1508a">00048</a>         <a class="code" href="classMyTypo.html#a8def2c649b389845fc9ef0425d6ba3f3a072b22b51d23b6ba5507658851b1508a">INVERT</a> = 7
+<a name="l00049"></a>00049     };
+<a name="l00050"></a>00050     
+<a name="l00051"></a><a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708ea">00051</a>     <span class="keyword">enum</span> <a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708ea">Foreground</a> {
+<a name="l00052"></a><a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaa5d485cc852fd8925db5f58724949ed7d">00052</a>         <a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaa5d485cc852fd8925db5f58724949ed7d">BLACK</a> = 30,
+<a name="l00053"></a><a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaae9a6714a38c1570a628c92d992b8886a">00053</a>         <a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaae9a6714a38c1570a628c92d992b8886a">RED</a>,
+<a name="l00054"></a><a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaac0090bdb54450325945e1eec5f3240df">00054</a>         <a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaac0090bdb54450325945e1eec5f3240df">GREEN</a>,
+<a name="l00055"></a><a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaa3980d41699961553b6365178968e1235">00055</a>         <a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaa3980d41699961553b6365178968e1235">BROWN</a>,
+<a name="l00056"></a><a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaae3d9ddbcc3cceb11912943b7647b3842">00056</a>         <a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaae3d9ddbcc3cceb11912943b7647b3842">BLUE</a>,
+<a name="l00057"></a><a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaa49a268a91b8ed1b28ea8518bed685029">00057</a>         <a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaa49a268a91b8ed1b28ea8518bed685029">PURPLE</a>,
+<a name="l00058"></a><a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaa20a754710244898038b406234e73682e">00058</a>         <a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaa20a754710244898038b406234e73682e">CYAN</a>,
+<a name="l00059"></a><a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaaa48d0f298f2b7be62cd7dc84d6b7a999">00059</a>         <a class="code" href="classMyTypo.html#a82023ae74e9c64ec7b6e57d54df708eaaa48d0f298f2b7be62cd7dc84d6b7a999">GRAY</a>
+<a name="l00060"></a>00060     };
+<a name="l00061"></a>00061     
+<a name="l00062"></a><a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8">00062</a>     <span class="keyword">enum</span> <a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8">Background</a> {
+<a name="l00063"></a><a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8ab5db6d6b3a486ef6d773c3c04c1281b4">00063</a>         <a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8ab5db6d6b3a486ef6d773c3c04c1281b4">B_TRANSPARENT</a> = -1,
+<a name="l00064"></a><a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8ac2e0d75a46d7044e594d4f89cb76b4ca">00064</a>         <a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8ac2e0d75a46d7044e594d4f89cb76b4ca">B_BLACK</a> = 40,
+<a name="l00065"></a><a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8aeb1941bfc2f16a35302f10000684a6ef">00065</a>         <a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8aeb1941bfc2f16a35302f10000684a6ef">B_RED</a>,
+<a name="l00066"></a><a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8aac6076a603ab6c8be9a700e115c01453">00066</a>         <a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8aac6076a603ab6c8be9a700e115c01453">B_GREEN</a>,
+<a name="l00067"></a><a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8afd8a2faa10bc6f4f68066e8a8064ec3f">00067</a>         <a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8afd8a2faa10bc6f4f68066e8a8064ec3f">B_BROWN</a>,
+<a name="l00068"></a><a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8a08b6e71d66570f7a3e34cc7995e85317">00068</a>         <a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8a08b6e71d66570f7a3e34cc7995e85317">B_BLUE</a>,
+<a name="l00069"></a><a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8a4d7b53c84bb3c21ca6adae139dca95de">00069</a>         <a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8a4d7b53c84bb3c21ca6adae139dca95de">B_PURPLE</a>,
+<a name="l00070"></a><a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8a6762080d090818122cabaf479be290a6">00070</a>         <a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8a6762080d090818122cabaf479be290a6">B_CYAN</a>,
+<a name="l00071"></a><a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8a85f06fb2e3d8b757294edc6eecabf43e">00071</a>         <a class="code" href="classMyTypo.html#ac6643b465e94f6ecb7fb650c4b3531e8a85f06fb2e3d8b757294edc6eecabf43e">B_GRAY</a>
+<a name="l00072"></a>00072     };
+<a name="l00073"></a>00073     
+<a name="l00074"></a>00074 };
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076 std::ostream&amp; <a class="code" href="MyTypo_8cpp.html#a9dd4ca6f7c239dd6dcc2db34f2fc02c1">operator&lt;&lt; </a>(std::ostream&amp; ost, <a class="code" href="classMyTypo.html" title="Firulas.">MyTypo</a>&amp; mt);
+<a name="l00077"></a>00077 
+<a name="l00078"></a>00078 <span class="preprocessor">#endif</span>
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -136,7 +137,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sat Nov 12 2011 20:55:30 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sat Nov 12 2011 21:23:01 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>

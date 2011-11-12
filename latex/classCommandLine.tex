@@ -4,23 +4,36 @@
 }
 
 
+Represeta uma linha de comando.  
+
+
+
+
 {\ttfamily \#include $<$CommandLine.hpp$>$}
 
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classCommandLine}{CommandLine} \& \hyperlink{classCommandLine_af14743d91891651d369d18644c2f4bb3}{operator=} (\hyperlink{classCommandLine}{CommandLine} \&)
+\hyperlink{classCommandLine}{CommandLine} \& \hyperlink{classCommandLine_a6afe6535f161927c0f658c51b9b63387}{operator=} (\hyperlink{classCommandLine}{CommandLine} \&commandLine)
 \item 
 \hyperlink{classCommandLine_a5c92f3c1c27926725eba68012f94d037}{CommandLine} (std::list$<$ \hyperlink{classCommand}{Command} $\ast$ $>$ $\ast$pipeline, bool background)
-\item 
+\begin{DoxyCompactList}\small\item\em Construtor. \item\end{DoxyCompactList}\item 
 \hyperlink{classCommandLine_ac359efccafe57f845b1f747a9db3c6d9}{$\sim$CommandLine} ()
 \item 
 \hyperlink{classCommand}{Command} $\ast$ \hyperlink{classCommandLine_a34c3031124c1716e37170c5e60b487b2}{next} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Navega pela pipeline existente A cada utilizacao, o comando extraido e retirado completamente da pipeline existente. \item\end{DoxyCompactList}\item 
 bool \hyperlink{classCommandLine_a1994cb40c62ba84af078662842009a0b}{hasNext} ()
 \item 
 bool \hyperlink{classCommandLine_a4dfa18cb1625e1d25c6e5e68bbbc712e}{isBackground} ()
 \end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represeta uma linha de comando. Uma linha de comando pode conter uma serie de comandos em pipeline e termina quando ha um \& ou um final de linha. A linha de comando pode ser gerada por uma instancia de \hyperlink{classParser}{Parser}
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classCommand}{Command}, \hyperlink{classParser}{Parser} 
+\end{DoxySeeAlso}
 
 
 \subsection{Constructor \& Destructor Documentation}
@@ -34,6 +47,17 @@ bool \hyperlink{classCommandLine_a4dfa18cb1625e1d25c6e5e68bbbc712e}{isBackground
 \end{DoxyParamCaption}
 )}}
 \label{classCommandLine_a5c92f3c1c27926725eba68012f94d037}
+
+
+Construtor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pipeLine} & lista de comandos representando a pipeline \\
+\hline
+{\em background} & verdadeira, caso a pipeline deva ser executada em segundo plano \\
+\hline
+\end{DoxyParams}
 \hypertarget{classCommandLine_ac359efccafe57f845b1f747a9db3c6d9}{
 \index{CommandLine@{CommandLine}!$\sim$CommandLine@{$\sim$CommandLine}}
 \index{$\sim$CommandLine@{$\sim$CommandLine}!CommandLine@{CommandLine}}
@@ -55,6 +79,9 @@ bool \hyperlink{classCommandLine_a4dfa18cb1625e1d25c6e5e68bbbc712e}{isBackground
 \end{DoxyParamCaption}
 )}}
 \label{classCommandLine_a1994cb40c62ba84af078662842009a0b}
+\begin{DoxyReturn}{Returns}
+Verdadeiro se a pipeline nao esta vazia 
+\end{DoxyReturn}
 \hypertarget{classCommandLine_a4dfa18cb1625e1d25c6e5e68bbbc712e}{
 \index{CommandLine@{CommandLine}!isBackground@{isBackground}}
 \index{isBackground@{isBackground}!CommandLine@{CommandLine}}
@@ -64,6 +91,9 @@ bool \hyperlink{classCommandLine_a4dfa18cb1625e1d25c6e5e68bbbc712e}{isBackground
 \end{DoxyParamCaption}
 )}}
 \label{classCommandLine_a4dfa18cb1625e1d25c6e5e68bbbc712e}
+\begin{DoxyReturn}{Returns}
+Verdadeiro se a pipeline deve ser executada em segundo plano 
+\end{DoxyReturn}
 \hypertarget{classCommandLine_a34c3031124c1716e37170c5e60b487b2}{
 \index{CommandLine@{CommandLine}!next@{next}}
 \index{next@{next}!CommandLine@{CommandLine}}
@@ -73,15 +103,22 @@ bool \hyperlink{classCommandLine_a4dfa18cb1625e1d25c6e5e68bbbc712e}{isBackground
 \end{DoxyParamCaption}
 )}}
 \label{classCommandLine_a34c3031124c1716e37170c5e60b487b2}
-\hypertarget{classCommandLine_af14743d91891651d369d18644c2f4bb3}{
+
+
+Navega pela pipeline existente A cada utilizacao, o comando extraido e retirado completamente da pipeline existente. 
+
+\begin{DoxyReturn}{Returns}
+Um ponteiro para o proximo comando da pipeline existente ou NULL o ultimo comando retirado tenha sido o ultimo 
+\end{DoxyReturn}
+\hypertarget{classCommandLine_a6afe6535f161927c0f658c51b9b63387}{
 \index{CommandLine@{CommandLine}!operator=@{operator=}}
 \index{operator=@{operator=}!CommandLine@{CommandLine}}
 \subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf CommandLine}\& CommandLine::operator= (
 \begin{DoxyParamCaption}
-\item[{{\bf CommandLine} \&}]{}
+\item[{{\bf CommandLine} \&}]{commandLine}
 \end{DoxyParamCaption}
 )}}
-\label{classCommandLine_af14743d91891651d369d18644c2f4bb3}
+\label{classCommandLine_a6afe6535f161927c0f658c51b9b63387}
 
 
 The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
