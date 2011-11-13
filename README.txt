@@ -166,8 +166,56 @@ Topicos
            jobs
            fg %1
            <ctrl + c>
-           ctrl 
            fg %2
-           jobs | grep stopped
+           <ctrl + z>
+           jobs | grep Stopped
+           bg %2
+           kill %2
+           jobs
+           kill %3
+           jobs
+           kill %4
+           jobs | less
+           <ctrl + z>
+           jobs
+           kill %5
+           fg
+           <q>
+           xeyes | xeyes | xeyes | xeyes &
+           jobs
+           fg
+           <ctrl + z>
+           jobs
+           bg
+           jobs
+           kill %1
 
+      VI. Comandos Built-In ainda nao testados
+           
+           pwd
+           pwd | less
+           <q>
+           mkdir Pasta\ 1
+           cd Pasta\ 1
+           pwd
+           cd ..
+           pwd
+           rm -r Pasta\ 1
+           ls
+           ./shell
+           quit
+           exit
 
+    Observacoes: nao tente dar ctrl + c no less. Nem no bash isso e' possi-
+                 vel!
+
+    Para profiling, compilamos os arquivos segundo o shellscript compile,
+    que acompanha o source code, pois o gprof, utilizado para geracao do ar-
+    quivo de profile, nao consegue capturar eventos ocorridos na biblioteca
+    .so gerada para o trabalho.
+
+    Como a shell e' uma aplicacao interativa e como o gprof NAO contabiliza
+    tempos de operacoes IO e, tambem, como as operacoes de parsing e manu-
+    tencao das filas de jobs usam um tempo desprezivelmente baixo de CPU,
+    o relatorio do gprof, que utiliza 2 casas decimais para os segundos de
+    processamento utilizado por cada regiao do programa nao ultrapassou
