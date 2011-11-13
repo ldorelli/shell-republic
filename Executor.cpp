@@ -133,6 +133,7 @@ void Executor::run(CommandLine* cmdLine, std::map<std::string, Builtin*>& bComma
     int pp[2];
     int last;
     int firstPipedPid = 0;
+    std::list<int> wail;
     Command * command;
 	pp[0] = 0;
 	pp[1] = 1;
@@ -142,6 +143,7 @@ void Executor::run(CommandLine* cmdLine, std::map<std::string, Builtin*>& bComma
 			fdOut = pp[1];
 		}else fdOut = 1;
         last = run(command, firstPipedPid, cmdLine->isBackground(), bCommands, fdIn, fdOut);
+        wail.push_back(last);
     	if(fdIn!=0) close(fdIn);
 		if(fdOut!=1) close(fdOut);
 		fdIn = pp[0];
@@ -150,14 +152,10 @@ void Executor::run(CommandLine* cmdLine, std::map<std::string, Builtin*>& bComma
     
     if (firstPipedPid) {
         if (!cmdLine->isBackground()) {
-            int status;
-            int ret;
-            do{
-                status = 0;
-				ret = waitpid(-firstPipedPid, &status, 0);
-			}while(ret != -1);
-			tcsetpgrp(0, getpid());
-            std::cout << "sim\nsim\nsim\nsim\nsim\nsim\nsim";
+            std::list<int>::iterator it;
+            for (it = wail.begin(); it != wail.end(); it = wail.erase(it)) {
+                waitpid(*it, 0, 0);
+            }
             cleanUp();
         }
     }
