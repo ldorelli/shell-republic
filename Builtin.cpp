@@ -66,11 +66,11 @@ int FgCommand::_run(const char * args[], Executor * executor) {
     
     MyTypo myt (MyTypo::NORMAL, MyTypo::PURPLE);
     
-    std::list<int> wail;
+    std::list<Executor::Job*> wail;
     int pgid = 0;
     for (itA = lj->begin(), itB = lj->end(); itA!=itB; itA++) {
         if (itA->jobid == jobid) {
-            wail.push_back(itA->pid);
+            wail.push_back(&(*itA));
             if (!pgid) { 
                 pgid = getpgid(itA->pid);
                 executor->setLastForeground(itA->jobid);
@@ -81,14 +81,18 @@ int FgCommand::_run(const char * args[], Executor * executor) {
     tcsetpgrp(0, pgid);
     kill(-pgid, SIGCONT);
 	int status;
-    std::list<int>::iterator it;
+    std::list<Executor::Job*>::iterator it;
     for (it = wail.begin(); it != wail.end(); it++) {
 #ifdef __linux__
 		do{
 			waitpid(-pgid, &status, WUNTRACED | WCONTINUED);
 		}while( !WIFSTOPPED(status) && !WIFSIGNALED(status) && !WIFEXITED(status));
+		if(WIFSTOPPED(status)){
+             std::cout << '\n' << (*it)->pid << " stopped\n";
+			(*it)->stopped = true;
+		}
 #else
-        waitpid(*it, 0, 0);
+        waitpid((*it)->pid, 0, 0);
 #endif
     }    
     tcsetpgrp(0, getpid());
