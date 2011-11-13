@@ -148,12 +148,20 @@ void Executor::run(CommandLine* cmdLine, std::map<std::string, Builtin*>& bComma
 	}    
     if(fdIn!=0) close(fdIn);
     
-    // O negativo deixou certo!
-    if (firstPipedPid)
+    if (firstPipedPid) {
         if (!cmdLine->isBackground()) {
-            while( waitpid(-firstPipedPid, 0, 0)>=0 );
+            int status;
+            int ret;
+            do{
+                status = 0;
+				ret = waitpid(-firstPipedPid, &status, 0);
+			}while(ret != -1);
+			tcsetpgrp(0, getpid());
+            std::cout << "sim\nsim\nsim\nsim\nsim\nsim\nsim";
             cleanUp();
         }
+    }
+    
 }
 
 void Executor::cleanUp () {
