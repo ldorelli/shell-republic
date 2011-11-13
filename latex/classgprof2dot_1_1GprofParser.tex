@@ -1,0 +1,161 @@
+\hypertarget{classgprof2dot_1_1GprofParser}{
+\section{gprof2dot::GprofParser Class Reference}
+\label{classgprof2dot_1_1GprofParser}\index{gprof2dot::GprofParser@{gprof2dot::GprofParser}}
+}
+Inheritance diagram for gprof2dot::GprofParser:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classgprof2dot_1_1GprofParser}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classgprof2dot_1_1GprofParser_acacfb5c014ebdc5b5f0ea25cad4fec6f}{\_\-\_\-init\_\-\_\-}
+\item 
+def \hyperlink{classgprof2dot_1_1GprofParser_a5ab276c4c9abcc71d917ea14f73511eb}{readline}
+\item 
+def \hyperlink{classgprof2dot_1_1GprofParser_a2f7fb2ffdfdf923f74f22177baaccc40}{translate}
+\item 
+def \hyperlink{classgprof2dot_1_1GprofParser_abd32e64d5745ce238a90343bbf7f6bad}{parse\_\-function\_\-entry}
+\item 
+def \hyperlink{classgprof2dot_1_1GprofParser_a175b0a9f7484eb6f1da3e94a31eaf0ac}{parse\_\-cycle\_\-entry}
+\item 
+def \hyperlink{classgprof2dot_1_1GprofParser_a95fad2a05c6ca70256d7a25c56aa29cb}{parse\_\-cg\_\-entry}
+\item 
+def \hyperlink{classgprof2dot_1_1GprofParser_a71d6b6f813e70ca931dacdfc64d0b183}{parse\_\-cg}
+\item 
+def \hyperlink{classgprof2dot_1_1GprofParser_a840c96752592fffdb69514cf59022705}{parse}
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classgprof2dot_1_1GprofParser_a65b9a8783fe4aea6e72e67f041c126b2}{fp}
+\item 
+\hyperlink{classgprof2dot_1_1GprofParser_a7459094ba27540637888860ccea69720}{functions}
+\item 
+\hyperlink{classgprof2dot_1_1GprofParser_a5a17f96d4420c651af6b955c221c43c9}{cycles}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Parser for GNU gprof output.
+
+See also:
+- Chapter "Interpreting gprof's Output" from the GNU gprof manual
+  http://sourceware.org/binutils/docs-2.18/gprof/Call-Graph.html#Call-Graph
+- File "cg_print.c" from the GNU gprof source code
+  http://sourceware.org/cgi-bin/cvsweb.cgi/~checkout~/src/gprof/cg_print.c?rev=1.12&cvsroot=src
+\end{DoxyVerb}
+ 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classgprof2dot_1_1GprofParser_acacfb5c014ebdc5b5f0ea25cad4fec6f}{
+\index{gprof2dot::GprofParser@{gprof2dot::GprofParser}!\_\-\_\-init\_\-\_\-@{\_\-\_\-init\_\-\_\-}}
+\index{\_\-\_\-init\_\-\_\-@{\_\-\_\-init\_\-\_\-}!gprof2dot::GprofParser@{gprof2dot::GprofParser}}
+\subsubsection[{\_\-\_\-init\_\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def gprof2dot::GprofParser::\_\-\_\-init\_\-\_\- (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{fp}
+\end{DoxyParamCaption}
+)}}
+\label{classgprof2dot_1_1GprofParser_acacfb5c014ebdc5b5f0ea25cad4fec6f}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classgprof2dot_1_1GprofParser_a840c96752592fffdb69514cf59022705}{
+\index{gprof2dot::GprofParser@{gprof2dot::GprofParser}!parse@{parse}}
+\index{parse@{parse}!gprof2dot::GprofParser@{gprof2dot::GprofParser}}
+\subsubsection[{parse}]{\setlength{\rightskip}{0pt plus 5cm}def gprof2dot::GprofParser::parse (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}
+\label{classgprof2dot_1_1GprofParser_a840c96752592fffdb69514cf59022705}
+
+
+Reimplemented from \hyperlink{classgprof2dot_1_1Parser_a681a0bc74e640c9c8e3d629dd03049fc}{gprof2dot::Parser}.
+
+\hypertarget{classgprof2dot_1_1GprofParser_a71d6b6f813e70ca931dacdfc64d0b183}{
+\index{gprof2dot::GprofParser@{gprof2dot::GprofParser}!parse\_\-cg@{parse\_\-cg}}
+\index{parse\_\-cg@{parse\_\-cg}!gprof2dot::GprofParser@{gprof2dot::GprofParser}}
+\subsubsection[{parse\_\-cg}]{\setlength{\rightskip}{0pt plus 5cm}def gprof2dot::GprofParser::parse\_\-cg (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}
+\label{classgprof2dot_1_1GprofParser_a71d6b6f813e70ca931dacdfc64d0b183}
+\begin{DoxyVerb}Parse the call graph.\end{DoxyVerb}
+ \hypertarget{classgprof2dot_1_1GprofParser_a95fad2a05c6ca70256d7a25c56aa29cb}{
+\index{gprof2dot::GprofParser@{gprof2dot::GprofParser}!parse\_\-cg\_\-entry@{parse\_\-cg\_\-entry}}
+\index{parse\_\-cg\_\-entry@{parse\_\-cg\_\-entry}!gprof2dot::GprofParser@{gprof2dot::GprofParser}}
+\subsubsection[{parse\_\-cg\_\-entry}]{\setlength{\rightskip}{0pt plus 5cm}def gprof2dot::GprofParser::parse\_\-cg\_\-entry (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{lines}
+\end{DoxyParamCaption}
+)}}
+\label{classgprof2dot_1_1GprofParser_a95fad2a05c6ca70256d7a25c56aa29cb}
+\hypertarget{classgprof2dot_1_1GprofParser_a175b0a9f7484eb6f1da3e94a31eaf0ac}{
+\index{gprof2dot::GprofParser@{gprof2dot::GprofParser}!parse\_\-cycle\_\-entry@{parse\_\-cycle\_\-entry}}
+\index{parse\_\-cycle\_\-entry@{parse\_\-cycle\_\-entry}!gprof2dot::GprofParser@{gprof2dot::GprofParser}}
+\subsubsection[{parse\_\-cycle\_\-entry}]{\setlength{\rightskip}{0pt plus 5cm}def gprof2dot::GprofParser::parse\_\-cycle\_\-entry (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{lines}
+\end{DoxyParamCaption}
+)}}
+\label{classgprof2dot_1_1GprofParser_a175b0a9f7484eb6f1da3e94a31eaf0ac}
+\hypertarget{classgprof2dot_1_1GprofParser_abd32e64d5745ce238a90343bbf7f6bad}{
+\index{gprof2dot::GprofParser@{gprof2dot::GprofParser}!parse\_\-function\_\-entry@{parse\_\-function\_\-entry}}
+\index{parse\_\-function\_\-entry@{parse\_\-function\_\-entry}!gprof2dot::GprofParser@{gprof2dot::GprofParser}}
+\subsubsection[{parse\_\-function\_\-entry}]{\setlength{\rightskip}{0pt plus 5cm}def gprof2dot::GprofParser::parse\_\-function\_\-entry (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{lines}
+\end{DoxyParamCaption}
+)}}
+\label{classgprof2dot_1_1GprofParser_abd32e64d5745ce238a90343bbf7f6bad}
+\hypertarget{classgprof2dot_1_1GprofParser_a5ab276c4c9abcc71d917ea14f73511eb}{
+\index{gprof2dot::GprofParser@{gprof2dot::GprofParser}!readline@{readline}}
+\index{readline@{readline}!gprof2dot::GprofParser@{gprof2dot::GprofParser}}
+\subsubsection[{readline}]{\setlength{\rightskip}{0pt plus 5cm}def gprof2dot::GprofParser::readline (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}
+\label{classgprof2dot_1_1GprofParser_a5ab276c4c9abcc71d917ea14f73511eb}
+\hypertarget{classgprof2dot_1_1GprofParser_a2f7fb2ffdfdf923f74f22177baaccc40}{
+\index{gprof2dot::GprofParser@{gprof2dot::GprofParser}!translate@{translate}}
+\index{translate@{translate}!gprof2dot::GprofParser@{gprof2dot::GprofParser}}
+\subsubsection[{translate}]{\setlength{\rightskip}{0pt plus 5cm}def gprof2dot::GprofParser::translate (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{mo}
+\end{DoxyParamCaption}
+)}}
+\label{classgprof2dot_1_1GprofParser_a2f7fb2ffdfdf923f74f22177baaccc40}
+\begin{DoxyVerb}Extract a structure from a match object, while translating the types in the process.\end{DoxyVerb}
+ 
+
+\subsection{Member Data Documentation}
+\hypertarget{classgprof2dot_1_1GprofParser_a5a17f96d4420c651af6b955c221c43c9}{
+\index{gprof2dot::GprofParser@{gprof2dot::GprofParser}!cycles@{cycles}}
+\index{cycles@{cycles}!gprof2dot::GprofParser@{gprof2dot::GprofParser}}
+\subsubsection[{cycles}]{\setlength{\rightskip}{0pt plus 5cm}{\bf gprof2dot::GprofParser::cycles}}}
+\label{classgprof2dot_1_1GprofParser_a5a17f96d4420c651af6b955c221c43c9}
+\hypertarget{classgprof2dot_1_1GprofParser_a65b9a8783fe4aea6e72e67f041c126b2}{
+\index{gprof2dot::GprofParser@{gprof2dot::GprofParser}!fp@{fp}}
+\index{fp@{fp}!gprof2dot::GprofParser@{gprof2dot::GprofParser}}
+\subsubsection[{fp}]{\setlength{\rightskip}{0pt plus 5cm}{\bf gprof2dot::GprofParser::fp}}}
+\label{classgprof2dot_1_1GprofParser_a65b9a8783fe4aea6e72e67f041c126b2}
+\hypertarget{classgprof2dot_1_1GprofParser_a7459094ba27540637888860ccea69720}{
+\index{gprof2dot::GprofParser@{gprof2dot::GprofParser}!functions@{functions}}
+\index{functions@{functions}!gprof2dot::GprofParser@{gprof2dot::GprofParser}}
+\subsubsection[{functions}]{\setlength{\rightskip}{0pt plus 5cm}{\bf gprof2dot::GprofParser::functions}}}
+\label{classgprof2dot_1_1GprofParser_a7459094ba27540637888860ccea69720}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{gprof2dot_8py}{gprof2dot.py}\end{DoxyCompactItemize}

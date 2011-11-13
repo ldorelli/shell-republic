@@ -76,7 +76,7 @@ int Executor::run(Command* command, int & firstPipedPid, bool isBackground, std:
             if (!firstPipedPid) firstPipedPid = getpid();
             setpgid(getpid(), firstPipedPid);
             if (!isBackground)
-                tcsetpgrp(0, getpid());
+                tcsetpgrp(0, firstPipedPid);
             
             signal (SIGINT, SIG_DFL);
             signal (SIGQUIT, SIG_DFL);
@@ -113,7 +113,7 @@ int Executor::run(Command* command, int & firstPipedPid, bool isBackground, std:
             setLastForeground(job.jobid);
             if (!isBackground) {
                 foreground = firstPipedPid;
-                tcsetpgrp(0, pid);
+                tcsetpgrp(0, firstPipedPid);
             }
             else {
                 MyTypo myt(MyTypo::NORMAL, MyTypo::PURPLE);

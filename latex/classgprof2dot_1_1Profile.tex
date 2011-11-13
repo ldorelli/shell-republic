@@ -1,0 +1,190 @@
+\hypertarget{classgprof2dot_1_1Profile}{
+\section{gprof2dot::Profile Class Reference}
+\label{classgprof2dot_1_1Profile}\index{gprof2dot::Profile@{gprof2dot::Profile}}
+}
+Inheritance diagram for gprof2dot::Profile:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classgprof2dot_1_1Profile}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classgprof2dot_1_1Profile_a382a908aa54d329efa5a665de49b6913}{\_\-\_\-init\_\-\_\-}
+\item 
+def \hyperlink{classgprof2dot_1_1Profile_a04f4c5fa4b4bbf899fc90bfef2a827d3}{add\_\-function}
+\item 
+def \hyperlink{classgprof2dot_1_1Profile_a8fec12fa856f30c5430589634868456b}{add\_\-cycle}
+\item 
+def \hyperlink{classgprof2dot_1_1Profile_a04540c21937c3a4168983cb42d3ae33e}{validate}
+\item 
+def \hyperlink{classgprof2dot_1_1Profile_a80c3d1c49078c21e735930ff9e5eb88d}{find\_\-cycles}
+\item 
+def \hyperlink{classgprof2dot_1_1Profile_adfbd8866a3273a74485fa90dd9d784f1}{call\_\-ratios}
+\item 
+def \hyperlink{classgprof2dot_1_1Profile_a949fec672edcb92a63ce70dcedddb2bc}{integrate}
+\item 
+def \hyperlink{classgprof2dot_1_1Profile_abef5930211709a1efc06a03a71a0cc33}{aggregate}
+\item 
+def \hyperlink{classgprof2dot_1_1Profile_a6ed8ba8c0de35b973f292865dec31dda}{ratio}
+\item 
+def \hyperlink{classgprof2dot_1_1Profile_af08be21037ea945c2f5d76034c8aa388}{prune}
+\item 
+def \hyperlink{classgprof2dot_1_1Profile_a9aeda2770f7281ade06a77a0bb26bfcc}{dump}
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classgprof2dot_1_1Profile_a587b4dc62121332e158ae806804cff4b}{functions}
+\item 
+\hyperlink{classgprof2dot_1_1Profile_aec6070398d9a25112122c17a6d255e7d}{cycles}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}The whole profile.\end{DoxyVerb}
+ 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classgprof2dot_1_1Profile_a382a908aa54d329efa5a665de49b6913}{
+\index{gprof2dot::Profile@{gprof2dot::Profile}!\_\-\_\-init\_\-\_\-@{\_\-\_\-init\_\-\_\-}}
+\index{\_\-\_\-init\_\-\_\-@{\_\-\_\-init\_\-\_\-}!gprof2dot::Profile@{gprof2dot::Profile}}
+\subsubsection[{\_\-\_\-init\_\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def gprof2dot::Profile::\_\-\_\-init\_\-\_\- (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}
+\label{classgprof2dot_1_1Profile_a382a908aa54d329efa5a665de49b6913}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classgprof2dot_1_1Profile_a8fec12fa856f30c5430589634868456b}{
+\index{gprof2dot::Profile@{gprof2dot::Profile}!add\_\-cycle@{add\_\-cycle}}
+\index{add\_\-cycle@{add\_\-cycle}!gprof2dot::Profile@{gprof2dot::Profile}}
+\subsubsection[{add\_\-cycle}]{\setlength{\rightskip}{0pt plus 5cm}def gprof2dot::Profile::add\_\-cycle (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{cycle}
+\end{DoxyParamCaption}
+)}}
+\label{classgprof2dot_1_1Profile_a8fec12fa856f30c5430589634868456b}
+\hypertarget{classgprof2dot_1_1Profile_a04f4c5fa4b4bbf899fc90bfef2a827d3}{
+\index{gprof2dot::Profile@{gprof2dot::Profile}!add\_\-function@{add\_\-function}}
+\index{add\_\-function@{add\_\-function}!gprof2dot::Profile@{gprof2dot::Profile}}
+\subsubsection[{add\_\-function}]{\setlength{\rightskip}{0pt plus 5cm}def gprof2dot::Profile::add\_\-function (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{function}
+\end{DoxyParamCaption}
+)}}
+\label{classgprof2dot_1_1Profile_a04f4c5fa4b4bbf899fc90bfef2a827d3}
+\hypertarget{classgprof2dot_1_1Profile_abef5930211709a1efc06a03a71a0cc33}{
+\index{gprof2dot::Profile@{gprof2dot::Profile}!aggregate@{aggregate}}
+\index{aggregate@{aggregate}!gprof2dot::Profile@{gprof2dot::Profile}}
+\subsubsection[{aggregate}]{\setlength{\rightskip}{0pt plus 5cm}def gprof2dot::Profile::aggregate (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{event}
+\end{DoxyParamCaption}
+)}}
+\label{classgprof2dot_1_1Profile_abef5930211709a1efc06a03a71a0cc33}
+\begin{DoxyVerb}Aggregate an event for the whole profile.\end{DoxyVerb}
+ \hypertarget{classgprof2dot_1_1Profile_adfbd8866a3273a74485fa90dd9d784f1}{
+\index{gprof2dot::Profile@{gprof2dot::Profile}!call\_\-ratios@{call\_\-ratios}}
+\index{call\_\-ratios@{call\_\-ratios}!gprof2dot::Profile@{gprof2dot::Profile}}
+\subsubsection[{call\_\-ratios}]{\setlength{\rightskip}{0pt plus 5cm}def gprof2dot::Profile::call\_\-ratios (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{event}
+\end{DoxyParamCaption}
+)}}
+\label{classgprof2dot_1_1Profile_adfbd8866a3273a74485fa90dd9d784f1}
+\hypertarget{classgprof2dot_1_1Profile_a9aeda2770f7281ade06a77a0bb26bfcc}{
+\index{gprof2dot::Profile@{gprof2dot::Profile}!dump@{dump}}
+\index{dump@{dump}!gprof2dot::Profile@{gprof2dot::Profile}}
+\subsubsection[{dump}]{\setlength{\rightskip}{0pt plus 5cm}def gprof2dot::Profile::dump (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}
+\label{classgprof2dot_1_1Profile_a9aeda2770f7281ade06a77a0bb26bfcc}
+\hypertarget{classgprof2dot_1_1Profile_a80c3d1c49078c21e735930ff9e5eb88d}{
+\index{gprof2dot::Profile@{gprof2dot::Profile}!find\_\-cycles@{find\_\-cycles}}
+\index{find\_\-cycles@{find\_\-cycles}!gprof2dot::Profile@{gprof2dot::Profile}}
+\subsubsection[{find\_\-cycles}]{\setlength{\rightskip}{0pt plus 5cm}def gprof2dot::Profile::find\_\-cycles (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}
+\label{classgprof2dot_1_1Profile_a80c3d1c49078c21e735930ff9e5eb88d}
+\begin{DoxyVerb}Find cycles using Tarjan's strongly connected components algorithm.\end{DoxyVerb}
+ \hypertarget{classgprof2dot_1_1Profile_a949fec672edcb92a63ce70dcedddb2bc}{
+\index{gprof2dot::Profile@{gprof2dot::Profile}!integrate@{integrate}}
+\index{integrate@{integrate}!gprof2dot::Profile@{gprof2dot::Profile}}
+\subsubsection[{integrate}]{\setlength{\rightskip}{0pt plus 5cm}def gprof2dot::Profile::integrate (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{outevent, }
+\item[{}]{inevent}
+\end{DoxyParamCaption}
+)}}
+\label{classgprof2dot_1_1Profile_a949fec672edcb92a63ce70dcedddb2bc}
+\begin{DoxyVerb}Propagate function time ratio allong the function calls.
+
+Must be called after finding the cycles.
+
+See also:
+- http://citeseer.ist.psu.edu/graham82gprof.html
+\end{DoxyVerb}
+ \hypertarget{classgprof2dot_1_1Profile_af08be21037ea945c2f5d76034c8aa388}{
+\index{gprof2dot::Profile@{gprof2dot::Profile}!prune@{prune}}
+\index{prune@{prune}!gprof2dot::Profile@{gprof2dot::Profile}}
+\subsubsection[{prune}]{\setlength{\rightskip}{0pt plus 5cm}def gprof2dot::Profile::prune (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{node\_\-thres, }
+\item[{}]{edge\_\-thres}
+\end{DoxyParamCaption}
+)}}
+\label{classgprof2dot_1_1Profile_af08be21037ea945c2f5d76034c8aa388}
+\begin{DoxyVerb}Prune the profile\end{DoxyVerb}
+ \hypertarget{classgprof2dot_1_1Profile_a6ed8ba8c0de35b973f292865dec31dda}{
+\index{gprof2dot::Profile@{gprof2dot::Profile}!ratio@{ratio}}
+\index{ratio@{ratio}!gprof2dot::Profile@{gprof2dot::Profile}}
+\subsubsection[{ratio}]{\setlength{\rightskip}{0pt plus 5cm}def gprof2dot::Profile::ratio (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{outevent, }
+\item[{}]{inevent}
+\end{DoxyParamCaption}
+)}}
+\label{classgprof2dot_1_1Profile_a6ed8ba8c0de35b973f292865dec31dda}
+\hypertarget{classgprof2dot_1_1Profile_a04540c21937c3a4168983cb42d3ae33e}{
+\index{gprof2dot::Profile@{gprof2dot::Profile}!validate@{validate}}
+\index{validate@{validate}!gprof2dot::Profile@{gprof2dot::Profile}}
+\subsubsection[{validate}]{\setlength{\rightskip}{0pt plus 5cm}def gprof2dot::Profile::validate (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}
+\label{classgprof2dot_1_1Profile_a04540c21937c3a4168983cb42d3ae33e}
+\begin{DoxyVerb}Validate the edges.\end{DoxyVerb}
+ 
+
+\subsection{Member Data Documentation}
+\hypertarget{classgprof2dot_1_1Profile_aec6070398d9a25112122c17a6d255e7d}{
+\index{gprof2dot::Profile@{gprof2dot::Profile}!cycles@{cycles}}
+\index{cycles@{cycles}!gprof2dot::Profile@{gprof2dot::Profile}}
+\subsubsection[{cycles}]{\setlength{\rightskip}{0pt plus 5cm}{\bf gprof2dot::Profile::cycles}}}
+\label{classgprof2dot_1_1Profile_aec6070398d9a25112122c17a6d255e7d}
+\hypertarget{classgprof2dot_1_1Profile_a587b4dc62121332e158ae806804cff4b}{
+\index{gprof2dot::Profile@{gprof2dot::Profile}!functions@{functions}}
+\index{functions@{functions}!gprof2dot::Profile@{gprof2dot::Profile}}
+\subsubsection[{functions}]{\setlength{\rightskip}{0pt plus 5cm}{\bf gprof2dot::Profile::functions}}}
+\label{classgprof2dot_1_1Profile_a587b4dc62121332e158ae806804cff4b}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{gprof2dot_8py}{gprof2dot.py}\end{DoxyCompactItemize}

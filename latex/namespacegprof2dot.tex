@@ -1,0 +1,280 @@
+\hypertarget{namespacegprof2dot}{
+\section{gprof2dot Namespace Reference}
+\label{namespacegprof2dot}\index{gprof2dot@{gprof2dot}}
+}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classgprof2dot_1_1UndefinedEvent}{UndefinedEvent}
+\item 
+class \hyperlink{classgprof2dot_1_1Event}{Event}
+\item 
+class \hyperlink{classgprof2dot_1_1Object}{Object}
+\item 
+class \hyperlink{classgprof2dot_1_1Call}{Call}
+\item 
+class \hyperlink{classgprof2dot_1_1Function}{Function}
+\item 
+class \hyperlink{classgprof2dot_1_1Cycle}{Cycle}
+\item 
+class \hyperlink{classgprof2dot_1_1Profile}{Profile}
+\item 
+class \hyperlink{classgprof2dot_1_1Struct}{Struct}
+\item 
+class \hyperlink{classgprof2dot_1_1ParseError}{ParseError}
+\item 
+class \hyperlink{classgprof2dot_1_1Parser}{Parser}
+\item 
+class \hyperlink{classgprof2dot_1_1LineParser}{LineParser}
+\item 
+class \hyperlink{classgprof2dot_1_1XmlToken}{XmlToken}
+\item 
+class \hyperlink{classgprof2dot_1_1XmlTokenizer}{XmlTokenizer}
+\item 
+class \hyperlink{classgprof2dot_1_1XmlTokenMismatch}{XmlTokenMismatch}
+\item 
+class \hyperlink{classgprof2dot_1_1XmlParser}{XmlParser}
+\item 
+class \hyperlink{classgprof2dot_1_1GprofParser}{GprofParser}
+\item 
+class \hyperlink{classgprof2dot_1_1CallgrindParser}{CallgrindParser}
+\item 
+class \hyperlink{classgprof2dot_1_1PerfParser}{PerfParser}
+\item 
+class \hyperlink{classgprof2dot_1_1OprofileParser}{OprofileParser}
+\item 
+class \hyperlink{classgprof2dot_1_1HProfParser}{HProfParser}
+\item 
+class \hyperlink{classgprof2dot_1_1SysprofParser}{SysprofParser}
+\item 
+class \hyperlink{classgprof2dot_1_1SharkParser}{SharkParser}
+\item 
+class \hyperlink{classgprof2dot_1_1XPerfParser}{XPerfParser}
+\item 
+class \hyperlink{classgprof2dot_1_1SleepyParser}{SleepyParser}
+\item 
+class \hyperlink{classgprof2dot_1_1AQtimeTable}{AQtimeTable}
+\item 
+class \hyperlink{classgprof2dot_1_1AQtimeParser}{AQtimeParser}
+\item 
+class \hyperlink{classgprof2dot_1_1PstatsParser}{PstatsParser}
+\item 
+class \hyperlink{classgprof2dot_1_1Theme}{Theme}
+\item 
+class \hyperlink{classgprof2dot_1_1DotWriter}{DotWriter}
+\item 
+class \hyperlink{classgprof2dot_1_1Main}{Main}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespacegprof2dot_ab09acfc238bb48c2a9367a99ad646371}{times}
+\item 
+def \hyperlink{namespacegprof2dot_a4593a742915303b1fc39347fb781b2ef}{percentage}
+\item 
+def \hyperlink{namespacegprof2dot_aa203a76e6049687c1e57913af63d088b}{add}
+\item 
+def \hyperlink{namespacegprof2dot_ae4ff6a99d7012515570b8258416699b0}{equal}
+\item 
+def \hyperlink{namespacegprof2dot_aab854bd72a6622f45b68b64cdc674ba0}{fail}
+\item 
+def \hyperlink{namespacegprof2dot_a4c10337c274ef0696d2b44a06764bf2b}{ratio}
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+string \hyperlink{namespacegprof2dot_aef49cc0d071a48c27f269b1fefa0b259}{\_\-\_\-author\_\-\_\-} = \char`\"{}Jose Fonseca\char`\"{}
+\item 
+string \hyperlink{namespacegprof2dot_abb4ac492c5f33eb464efcdd38c8a4af0}{\_\-\_\-version\_\-\_\-} = \char`\"{}1.0\char`\"{}
+\item 
+int \hyperlink{namespacegprof2dot_a442824fd8acb25239ae698ca2c7e08d6}{tol} = 2
+\item 
+tuple \hyperlink{namespacegprof2dot_a3cfb98044f99cfdfb0cef686b3ed3c74}{CALLS} = \hyperlink{classgprof2dot_1_1Event}{Event}(\char`\"{}Calls\char`\"{}, 0, add, times)
+\item 
+tuple \hyperlink{namespacegprof2dot_a4e4ea28f29d46701235f133af771103f}{SAMPLES} = \hyperlink{classgprof2dot_1_1Event}{Event}(\char`\"{}Samples\char`\"{}, 0, add)
+\item 
+tuple \hyperlink{namespacegprof2dot_a58b6460141073b790688ed1dd4d427ee}{SAMPLES2} = \hyperlink{classgprof2dot_1_1Event}{Event}(\char`\"{}Samples\char`\"{}, 0, add)
+\item 
+tuple \hyperlink{namespacegprof2dot_a6d330baab773f0f34c75fa91c763cbd3}{TIME} = \hyperlink{classgprof2dot_1_1Event}{Event}(\char`\"{}Time\char`\"{}, 0.0, add, lambda x: '(' + str(x) + ')')
+\item 
+tuple \hyperlink{namespacegprof2dot_ac93e094e954c5b58088dc398a764670b}{TIME\_\-RATIO} = \hyperlink{classgprof2dot_1_1Event}{Event}(\char`\"{}Time ratio\char`\"{}, 0.0, add, lambda x: '(' + percentage(x) + ')')
+\item 
+tuple \hyperlink{namespacegprof2dot_a3b63ba497b1ebe0c63064d7c77123930}{TOTAL\_\-TIME} = \hyperlink{classgprof2dot_1_1Event}{Event}(\char`\"{}Total time\char`\"{}, 0.0, fail)
+\item 
+tuple \hyperlink{namespacegprof2dot_a09afab61d414ac377c75fc45a6ea503e}{TOTAL\_\-TIME\_\-RATIO} = \hyperlink{classgprof2dot_1_1Event}{Event}(\char`\"{}Total time ratio\char`\"{}, 0.0, fail, percentage)
+\item 
+tuple \hyperlink{namespacegprof2dot_a4e72c47d6d17a030a03d562812c1a32a}{TEMPERATURE\_\-COLORMAP}
+\item 
+tuple \hyperlink{namespacegprof2dot_ac297cc5a9b66874d10fdf32f4fe69417}{PINK\_\-COLORMAP}
+\item 
+tuple \hyperlink{namespacegprof2dot_af6ef5bd07ae324a28a57189c326a514b}{GRAY\_\-COLORMAP}
+\item 
+tuple \hyperlink{namespacegprof2dot_a7f79294d4643a0627ba9548bcce0da5b}{BW\_\-COLORMAP}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{namespacegprof2dot_aa203a76e6049687c1e57913af63d088b}{
+\index{gprof2dot@{gprof2dot}!add@{add}}
+\index{add@{add}!gprof2dot@{gprof2dot}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}def gprof2dot::add (
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{b}
+\end{DoxyParamCaption}
+)}}
+\label{namespacegprof2dot_aa203a76e6049687c1e57913af63d088b}
+\hypertarget{namespacegprof2dot_ae4ff6a99d7012515570b8258416699b0}{
+\index{gprof2dot@{gprof2dot}!equal@{equal}}
+\index{equal@{equal}!gprof2dot@{gprof2dot}}
+\subsubsection[{equal}]{\setlength{\rightskip}{0pt plus 5cm}def gprof2dot::equal (
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{b}
+\end{DoxyParamCaption}
+)}}
+\label{namespacegprof2dot_ae4ff6a99d7012515570b8258416699b0}
+\hypertarget{namespacegprof2dot_aab854bd72a6622f45b68b64cdc674ba0}{
+\index{gprof2dot@{gprof2dot}!fail@{fail}}
+\index{fail@{fail}!gprof2dot@{gprof2dot}}
+\subsubsection[{fail}]{\setlength{\rightskip}{0pt plus 5cm}def gprof2dot::fail (
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{b}
+\end{DoxyParamCaption}
+)}}
+\label{namespacegprof2dot_aab854bd72a6622f45b68b64cdc674ba0}
+\hypertarget{namespacegprof2dot_a4593a742915303b1fc39347fb781b2ef}{
+\index{gprof2dot@{gprof2dot}!percentage@{percentage}}
+\index{percentage@{percentage}!gprof2dot@{gprof2dot}}
+\subsubsection[{percentage}]{\setlength{\rightskip}{0pt plus 5cm}def gprof2dot::percentage (
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)}}
+\label{namespacegprof2dot_a4593a742915303b1fc39347fb781b2ef}
+\hypertarget{namespacegprof2dot_a4c10337c274ef0696d2b44a06764bf2b}{
+\index{gprof2dot@{gprof2dot}!ratio@{ratio}}
+\index{ratio@{ratio}!gprof2dot@{gprof2dot}}
+\subsubsection[{ratio}]{\setlength{\rightskip}{0pt plus 5cm}def gprof2dot::ratio (
+\begin{DoxyParamCaption}
+\item[{}]{numerator, }
+\item[{}]{denominator}
+\end{DoxyParamCaption}
+)}}
+\label{namespacegprof2dot_a4c10337c274ef0696d2b44a06764bf2b}
+\hypertarget{namespacegprof2dot_ab09acfc238bb48c2a9367a99ad646371}{
+\index{gprof2dot@{gprof2dot}!times@{times}}
+\index{times@{times}!gprof2dot@{gprof2dot}}
+\subsubsection[{times}]{\setlength{\rightskip}{0pt plus 5cm}def gprof2dot::times (
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)}}
+\label{namespacegprof2dot_ab09acfc238bb48c2a9367a99ad646371}
+
+
+\subsection{Variable Documentation}
+\hypertarget{namespacegprof2dot_aef49cc0d071a48c27f269b1fefa0b259}{
+\index{gprof2dot@{gprof2dot}!\_\-\_\-author\_\-\_\-@{\_\-\_\-author\_\-\_\-}}
+\index{\_\-\_\-author\_\-\_\-@{\_\-\_\-author\_\-\_\-}!gprof2dot@{gprof2dot}}
+\subsubsection[{\_\-\_\-author\_\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}string {\bf gprof2dot::\_\-\_\-author\_\-\_\-} = \char`\"{}Jose Fonseca\char`\"{}}}
+\label{namespacegprof2dot_aef49cc0d071a48c27f269b1fefa0b259}
+\hypertarget{namespacegprof2dot_abb4ac492c5f33eb464efcdd38c8a4af0}{
+\index{gprof2dot@{gprof2dot}!\_\-\_\-version\_\-\_\-@{\_\-\_\-version\_\-\_\-}}
+\index{\_\-\_\-version\_\-\_\-@{\_\-\_\-version\_\-\_\-}!gprof2dot@{gprof2dot}}
+\subsubsection[{\_\-\_\-version\_\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}string {\bf gprof2dot::\_\-\_\-version\_\-\_\-} = \char`\"{}1.0\char`\"{}}}
+\label{namespacegprof2dot_abb4ac492c5f33eb464efcdd38c8a4af0}
+\hypertarget{namespacegprof2dot_a7f79294d4643a0627ba9548bcce0da5b}{
+\index{gprof2dot@{gprof2dot}!BW\_\-COLORMAP@{BW\_\-COLORMAP}}
+\index{BW\_\-COLORMAP@{BW\_\-COLORMAP}!gprof2dot@{gprof2dot}}
+\subsubsection[{BW\_\-COLORMAP}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf gprof2dot::BW\_\-COLORMAP}}}
+\label{namespacegprof2dot_a7f79294d4643a0627ba9548bcce0da5b}
+{\bfseries Initial value:}
+\begin{DoxyCode}
+1 Theme(
+2     minfontsize = 8.0,
+3     maxfontsize = 24.0,
+4     mincolor = (0.0, 0.0, 0.0), # black
+5     maxcolor = (0.0, 0.0, 0.0), # black
+6     minpenwidth = 0.1,
+7     maxpenwidth = 8.0,
+8 )
+\end{DoxyCode}
+\hypertarget{namespacegprof2dot_a3cfb98044f99cfdfb0cef686b3ed3c74}{
+\index{gprof2dot@{gprof2dot}!CALLS@{CALLS}}
+\index{CALLS@{CALLS}!gprof2dot@{gprof2dot}}
+\subsubsection[{CALLS}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf gprof2dot::CALLS} = {\bf Event}(\char`\"{}Calls\char`\"{}, 0, add, times)}}
+\label{namespacegprof2dot_a3cfb98044f99cfdfb0cef686b3ed3c74}
+\hypertarget{namespacegprof2dot_af6ef5bd07ae324a28a57189c326a514b}{
+\index{gprof2dot@{gprof2dot}!GRAY\_\-COLORMAP@{GRAY\_\-COLORMAP}}
+\index{GRAY\_\-COLORMAP@{GRAY\_\-COLORMAP}!gprof2dot@{gprof2dot}}
+\subsubsection[{GRAY\_\-COLORMAP}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf gprof2dot::GRAY\_\-COLORMAP}}}
+\label{namespacegprof2dot_af6ef5bd07ae324a28a57189c326a514b}
+{\bfseries Initial value:}
+\begin{DoxyCode}
+1 Theme(
+2     mincolor = (0.0, 0.0, 0.85), # light gray
+3     maxcolor = (0.0, 0.0, 0.0), # black
+4 )
+\end{DoxyCode}
+\hypertarget{namespacegprof2dot_ac297cc5a9b66874d10fdf32f4fe69417}{
+\index{gprof2dot@{gprof2dot}!PINK\_\-COLORMAP@{PINK\_\-COLORMAP}}
+\index{PINK\_\-COLORMAP@{PINK\_\-COLORMAP}!gprof2dot@{gprof2dot}}
+\subsubsection[{PINK\_\-COLORMAP}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf gprof2dot::PINK\_\-COLORMAP}}}
+\label{namespacegprof2dot_ac297cc5a9b66874d10fdf32f4fe69417}
+{\bfseries Initial value:}
+\begin{DoxyCode}
+1 Theme(
+2     mincolor = (0.0, 1.0, 0.90), # pink
+3     maxcolor = (0.0, 1.0, 0.5), # satured red
+4 )
+\end{DoxyCode}
+\hypertarget{namespacegprof2dot_a4e4ea28f29d46701235f133af771103f}{
+\index{gprof2dot@{gprof2dot}!SAMPLES@{SAMPLES}}
+\index{SAMPLES@{SAMPLES}!gprof2dot@{gprof2dot}}
+\subsubsection[{SAMPLES}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf gprof2dot::SAMPLES} = {\bf Event}(\char`\"{}Samples\char`\"{}, 0, add)}}
+\label{namespacegprof2dot_a4e4ea28f29d46701235f133af771103f}
+\hypertarget{namespacegprof2dot_a58b6460141073b790688ed1dd4d427ee}{
+\index{gprof2dot@{gprof2dot}!SAMPLES2@{SAMPLES2}}
+\index{SAMPLES2@{SAMPLES2}!gprof2dot@{gprof2dot}}
+\subsubsection[{SAMPLES2}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf gprof2dot::SAMPLES2} = {\bf Event}(\char`\"{}Samples\char`\"{}, 0, add)}}
+\label{namespacegprof2dot_a58b6460141073b790688ed1dd4d427ee}
+\hypertarget{namespacegprof2dot_a4e72c47d6d17a030a03d562812c1a32a}{
+\index{gprof2dot@{gprof2dot}!TEMPERATURE\_\-COLORMAP@{TEMPERATURE\_\-COLORMAP}}
+\index{TEMPERATURE\_\-COLORMAP@{TEMPERATURE\_\-COLORMAP}!gprof2dot@{gprof2dot}}
+\subsubsection[{TEMPERATURE\_\-COLORMAP}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf gprof2dot::TEMPERATURE\_\-COLORMAP}}}
+\label{namespacegprof2dot_a4e72c47d6d17a030a03d562812c1a32a}
+{\bfseries Initial value:}
+\begin{DoxyCode}
+1 Theme(
+2     mincolor = (2.0/3.0, 0.80, 0.25), # dark blue
+3     maxcolor = (0.0, 1.0, 0.5), # satured red
+4     gamma = 1.0
+5 )
+\end{DoxyCode}
+\hypertarget{namespacegprof2dot_a6d330baab773f0f34c75fa91c763cbd3}{
+\index{gprof2dot@{gprof2dot}!TIME@{TIME}}
+\index{TIME@{TIME}!gprof2dot@{gprof2dot}}
+\subsubsection[{TIME}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf gprof2dot::TIME} = {\bf Event}(\char`\"{}Time\char`\"{}, 0.0, add, lambda x: '(' + str(x) + ')')}}
+\label{namespacegprof2dot_a6d330baab773f0f34c75fa91c763cbd3}
+\hypertarget{namespacegprof2dot_ac93e094e954c5b58088dc398a764670b}{
+\index{gprof2dot@{gprof2dot}!TIME\_\-RATIO@{TIME\_\-RATIO}}
+\index{TIME\_\-RATIO@{TIME\_\-RATIO}!gprof2dot@{gprof2dot}}
+\subsubsection[{TIME\_\-RATIO}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf gprof2dot::TIME\_\-RATIO} = {\bf Event}(\char`\"{}Time ratio\char`\"{}, 0.0, add, lambda x: '(' + percentage(x) + ')')}}
+\label{namespacegprof2dot_ac93e094e954c5b58088dc398a764670b}
+\hypertarget{namespacegprof2dot_a442824fd8acb25239ae698ca2c7e08d6}{
+\index{gprof2dot@{gprof2dot}!tol@{tol}}
+\index{tol@{tol}!gprof2dot@{gprof2dot}}
+\subsubsection[{tol}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf gprof2dot::tol} = 2}}
+\label{namespacegprof2dot_a442824fd8acb25239ae698ca2c7e08d6}
+\hypertarget{namespacegprof2dot_a3b63ba497b1ebe0c63064d7c77123930}{
+\index{gprof2dot@{gprof2dot}!TOTAL\_\-TIME@{TOTAL\_\-TIME}}
+\index{TOTAL\_\-TIME@{TOTAL\_\-TIME}!gprof2dot@{gprof2dot}}
+\subsubsection[{TOTAL\_\-TIME}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf gprof2dot::TOTAL\_\-TIME} = {\bf Event}(\char`\"{}Total time\char`\"{}, 0.0, fail)}}
+\label{namespacegprof2dot_a3b63ba497b1ebe0c63064d7c77123930}
+\hypertarget{namespacegprof2dot_a09afab61d414ac377c75fc45a6ea503e}{
+\index{gprof2dot@{gprof2dot}!TOTAL\_\-TIME\_\-RATIO@{TOTAL\_\-TIME\_\-RATIO}}
+\index{TOTAL\_\-TIME\_\-RATIO@{TOTAL\_\-TIME\_\-RATIO}!gprof2dot@{gprof2dot}}
+\subsubsection[{TOTAL\_\-TIME\_\-RATIO}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf gprof2dot::TOTAL\_\-TIME\_\-RATIO} = {\bf Event}(\char`\"{}Total time ratio\char`\"{}, 0.0, fail, percentage)}}
+\label{namespacegprof2dot_a09afab61d414ac377c75fc45a6ea503e}
