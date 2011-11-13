@@ -10,17 +10,20 @@ std::string Parser::nextWord() {
     std::string word;
     bool specialChar = false; //It read '\\'
     bool insideComma = false;
+    bool simpleComma = false;
     
     unsigned lsize = (unsigned)line.size();
     for (; index < lsize; index++) {
         char ch = line[index];
         if (specialChar) specialChar = false, word += ch;
-        else if (insideComma && ch == '"') insideComma = false;
-        else if (ch == '\\') specialChar = true;
+        else if (insideComma && !simpleComma && ch == '"') insideComma = false;
+        else if (insideComma && simpleComma && ch == '\'') insideComma = simpleComma = false;
+        else if (ch == '\\' && insideComma && !simpleComma) specialChar = true;
         else if (insideComma) word += ch;
         else if (ch == '"') insideComma = true;
+        else if (ch == '\'') insideComma = simpleComma = true;
         else if (ch == '&' && word.length() > 0) {; break; }
-        else if (ch != ' ') word += ch;
+        else if (ch != ' ' && ch != '\t') word += ch;
         else if (!word.empty()) break;
     }
     return word;
@@ -42,12 +45,11 @@ CommandLine* Parser::readCommandLine () {
 //        sigemptyset(&mask);
 //        sigaddset(&mask, SIGCHLD);        
 //        sigprocmask(SIG_BLOCK, &mask, &orig_mask);
-        
+        std::getline(std::cin, line);
         if (std::cin.eof()) {
             rewind = true;
             std::cin.clear();
         }
-        std::getline(std::cin, line);
 //        Solucao parcial: 
 //        sigprocmask(SIG_SETMASK, &orig_mask, 0);
     }

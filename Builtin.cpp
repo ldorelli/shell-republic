@@ -156,7 +156,5 @@ int EchoCommand::_run(const char *args[], Executor * executor) {
 }
 
 bool EchoCommand::forkable(){ return true; }
-
-//int PwdCommand
-
+bool PwdCommand::forkable(){ return true; }
 bool JobsCommand::forkable() {return true; }

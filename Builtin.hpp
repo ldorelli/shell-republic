@@ -43,6 +43,7 @@ class CdCommand : public Builtin {
  */
 class PwdCommand : public Builtin {
     int _run(const char*[], Executor*);
+    bool forkable();
 };
 
 
