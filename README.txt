@@ -122,5 +122,52 @@ Topicos
 
             touch Arquivo\ com\ espacos
             ls | grep "Arquivo com espacos"
+            echo "test \" comma"
+            echo 'test " comma'
+            echo "teste ' comma"
+            echo "test \\ comma"
+            echo 'test \\ comma'
+
+       II. Execucao simples
+
+            cal
+            vim
+            <:q>
+            ls
+            ls -la
+            ls -l -a
+
+      III. Redirecionamento de entrada / saida
+
+            echo CALENDARIO > teste.txt
+            cal >> teste.txt
+            cat < teste.txt
+
+       IV. Pipeline
+
+            cat < teste.txt | grep CAL
+            cat < teste.txt | grep 1
+            cat < teste.txt | grep 1 | grep 2
+            cat < teste.txt | grep 1 | grep 2 | grep 3  > saida.txt
+            less saida.txt
+            <q>
+
+       V. Execucao em background
+
+           xeyes &
+           xeyes&
+           xeyes & xeyes &
+           &&&&         xeyes       &&&&
+           jobs
+           jobs | less
+           <ctrl + z>
+           fg %6
+           <q>
+           jobs
+           fg %1
+           <ctrl + c>
+           ctrl 
+           fg %2
+           jobs | grep stopped
 
 
