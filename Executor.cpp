@@ -109,13 +109,10 @@ int Executor::run(Command* command, int & firstPipedPid, bool isBackground, std:
         } else {
             if (!firstPipedPid) firstPipedPid = pid;
             setpgid(pid, firstPipedPid);
-            job.groupid = firstPipedPid;
             job.pid = pid;
             setLastForeground(job.jobid);
-            if (!isBackground) {
-                foreground = firstPipedPid;
+            if (!isBackground)
                 tcsetpgrp(0, firstPipedPid);
-            }
             else {
                 MyTypo myt(MyTypo::NORMAL, MyTypo::PURPLE);
                 std::cout << myt << "[" << job.jobid << "] " << myt <<
@@ -161,7 +158,6 @@ void Executor::run(CommandLine* cmdLine, std::map<std::string, Builtin*>& bComma
 
 void Executor::cleanUp () {
     while (handlers::getDeathStatus()) {
-        tcsetpgrp(0, foreground);
         handlers::setDeathStatusFalse();
         std::list<Job>::iterator itA, itB;
         itA = jobs.begin();
@@ -178,14 +174,15 @@ void Executor::cleanUp () {
                 if (WIFSTOPPED(status)) {
                     itA->stopped = true;
                     std::cout << '\n' << itA->pid << " stopped\n";
-                    foreground = getpid();
+                    if (getpgid(itA->pid) == tcgetpgrp(0)) {
+                        tcsetpgrp(0, getpid());
+                    }
                 } else if (WIFEXITED(status) || WIFSIGNALED(status)){
                     if (lastForeground == itA->jobid) {
                         lastForeground = 0;
                     }
-                    if (foreground == itA->groupid) {
-                        foreground = getpid();
-                        tcsetpgrp(0, foreground);
+                    if (getpgid(itA->pid) == tcgetpgrp(0)) {
+                        tcsetpgrp(0, getpid());
                     }
                     itA = jobs.erase(itA);
                 } else if (WIFCONTINUED(status)) {
@@ -198,11 +195,11 @@ void Executor::cleanUp () {
     }
 }
 
-void Executor::setForeground (int pid) {foreground = pid; }
+//void Executor::setForeground (int pid) {foreground = pid; }
 
 unsigned Executor::getLastForeground () { return lastForeground; }
 void Executor::setLastForeground(unsigned jid) { lastForeground = jid;}
 
-Executor::Executor() : lastForeground(0) { foreground = getpid(); }
+Executor::Executor() : lastForeground(0) {  }
 Executor::Job::Job() : stopped(false), dead(false) {}
 

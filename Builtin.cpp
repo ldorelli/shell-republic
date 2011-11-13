@@ -43,7 +43,7 @@ int JobsCommand::_run(const char * args[], Executor * executor) {
     
     for (itA = lj->begin(), itB = lj->end(); itA!=itB; itA++) {
         std::cout << myt << '[' << itA->jobid << "] " <<
-        myt << itA->pid << " (" << itA->groupid << ")\t" <<
+        myt << itA->pid << " (" << getpgid(itA->pid) << ")\t" <<
         ((itA->stopped)?"Stopped\t\t":"Running\t\t") <<
         itA->name << '\n';
     }
@@ -70,16 +70,15 @@ int FgCommand::_run(const char * args[], Executor * executor) {
         if (itA->jobid == jobid) {
             
             executor->setLastForeground(itA->jobid);
-            executor->setForeground(itA->pid);
-            tcsetpgrp(0, itA->pid);
-            kill(itA->pid, SIGCONT);
-			executor->cleanUp();
+            int pgid = getpgid(itA->pid);
+            tcsetpgrp(0, pgid);
+            kill(-pgid, SIGCONT);
 			int status;
-            do{
-				waitpid(itA->pid, &status, WUNTRACED | WCONTINUED);
-			}while(!WIFEXITED(status) && !WIFSIGNALED(status) && !WIFSTOPPED(status));
-            executor->setForeground(getpid());
-			tcsetpgrp(0, getpid());
+            waitpid(-pgid, 0, 0);
+//            do{
+//				waitpid(itA->pid, &status, WUNTRACED | WCONTINUED);
+//			}while(!WIFEXITED(status) && !WIFSIGNALED(status) && !WIFSTOPPED(status));
+//			tcsetpgrp(0, getpid());
 			executor->cleanUp();
             break;
         }
@@ -108,7 +107,7 @@ int BgCommand::_run(const char * args[], Executor * executor) {
             kill(itA->pid, SIGCONT);
             handlers::setDeathStatusTrue();
             std::cout << myt << '[' << itA->jobid << "] " <<
-            myt << itA->pid << " (" << itA->groupid << ")\t\t" <<
+            myt << itA->pid << " (" << getpgid(itA->pid) << ")\t\t" <<
             itA->name << '\n';
             break;
         }
@@ -135,7 +134,7 @@ int KillCommand::_run(const char * args[], Executor * executor) {
             kill(itA->pid, SIGTERM);
             handlers::setDeathStatusTrue();
             std::cout << myt << '[' << itA->jobid << "] " <<
-            myt << itA->pid << " (" << itA->groupid << ")\t\t" <<
+            myt << itA->pid << " (" << getpgid(itA->pid) << ")\t\t" <<
             itA->name << '\n';
             break;
         }

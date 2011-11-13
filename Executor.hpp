@@ -32,7 +32,6 @@ public:
         std::string name;
         pid_t       pid;
         unsigned	jobid;
-        unsigned    groupid;
         bool        stopped;
         bool        dead;
         Job ();
@@ -42,7 +41,6 @@ private:
     std::list<Job> jobs;
     int run(Command* command, int & firstPipedPid, bool isBackground, std::map<std::string, Builtin*>&,
             int fdIn = 0, int fdOut = 1, int fdErr = 2);
-    unsigned foreground;
     unsigned lastForeground;
 public:
     Executor();
