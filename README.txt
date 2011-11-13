@@ -189,6 +189,12 @@ Topicos
            bg
            jobs
            kill %1
+           xeyes | xeyes & xeyes | xeyes &
+           jobs
+           kill %1
+           jobs
+           kill %2
+           jobs
 
       VI. Comandos Built-In ainda nao testados
            
@@ -219,3 +225,14 @@ Topicos
     tencao das filas de jobs usam um tempo desprezivelmente baixo de CPU,
     o relatorio do gprof, que utiliza 2 casas decimais para os segundos de
     processamento utilizado por cada regiao do programa nao ultrapassou
+    o valor de 0.00, assim, todas as chamadas utilizam, igualmente, 100%
+    do tempo de CPU do teste (que foi de 0.00).
+    Como resultado, optemos um grafico no qual todos os metodos aparecem em
+    vermelho, com 100% de uso da CPU (em questao de tempo), o que nao e'
+    muito informativo. Por outro lado, e' possivel se guiar parcialmente  
+    pelo de chamada que cada metodo sofre.
+
+    A imagem de profiling gerada acompanha o codigo fonte no arquivo
+    profiling.png
+
+
