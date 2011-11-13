@@ -12,7 +12,7 @@
 int Program::run () {
     
     setpgid(getpid(), getpid());
-    
+    /* Ignora os sinais inuteis */
     signal (SIGINT, SIG_IGN);
     signal (SIGQUIT, SIG_IGN);
     signal (SIGTSTP, SIG_IGN);
@@ -20,8 +20,10 @@ int Program::run () {
     signal (SIGTTOU, SIG_IGN);
     
     struct sigaction newAction;
+
+    /* Registra o handler para SIGCHLD */
     
-    newAction.sa_handler = handlers::sigChildHandler;
+	newAction.sa_handler = handlers::sigChildHandler;
     sigemptyset(&newAction.sa_mask);
     newAction.sa_flags = 0;
     sigaction (SIGCHLD, &newAction, 0);
@@ -29,7 +31,9 @@ int Program::run () {
     tcsetpgrp(0, getpid());
     
     std::map<std::string, Builtin*> bCommands;
-    
+ 	
+	/* Registra os comandos built-in */
+
     bCommands[std::string("jobs")] = new JobsCommand();
     bCommands[std::string("pwd")] = new PwdCommand();
     bCommands[std::string("exit")] = new ExitCommand();
@@ -48,7 +52,8 @@ int Program::run () {
     MyTypo myt3(MyTypo::BLINK, MyTypo::RED);
     
     while (true) {
-        if (parser.newLine()) std::cout <<
+    	/* Imprime o prompt */
+		if (parser.newLine()) std::cout <<
             myt1 << "Shell" << myt1 << myt3 << "-" << myt3 << myt1 << "Republic" << myt1 << myt2 << "$ " << myt2;
         CommandLine *cl = parser.readCommandLine();
         executor.cleanUp();

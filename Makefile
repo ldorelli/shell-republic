@@ -11,20 +11,11 @@ SHAREDC = Executor.cpp \
 MAINC = main.cpp
 SHAREDLIB = libshell.so
 LIBS = -lshell
-CFLAGS = -O2
-OBJS = Executor.o \
-		Builtin.o \
-		Command.o \
-		CommandLine.o \
-		Executor.o \
-		Handlers.o \
-		Parser.o \
-		MyTypo.o \
-		Program.o 
+CFLAGS = -pg -O2
 
 ALL:
 	$(CC) -fPIC -c $(SHAREDC) $(CFLAGS)
-	$(CC) -fPIC -shared -o $(SHAREDLIB) *.o
-	$(CC) -o shell $(MAINC) -L. $(LIBS) 
+	$(CC) -pg -fPIC -shared -o $(SHAREDLIB) *.o
+	$(CC) -pg -o shell $(MAINC) -L. $(LIBS) 
 	mv $(SHAREDLIB) /usr/lib
 

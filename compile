@@ -1,3 +1,3 @@
-g++ -c *.cpp -Wall -O3
-g++ -g -o shell *.o -Wall -O3
+g++ -pg -c *.cpp -Wall -O3
+g++ -pg -o shell *.o -Wall -O3
 rm *.o
