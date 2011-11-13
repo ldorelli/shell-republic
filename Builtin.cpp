@@ -88,7 +88,7 @@ int FgCommand::_run(const char * args[], Executor * executor) {
 			waitpid(-pgid, &status, WUNTRACED | WCONTINUED);
 		}while( !WIFSTOPPED(status) && !WIFSIGNALED(status) && !WIFEXITED(status));
 #else
-        waitpid(*itA, 0, 0);
+        waitpid(*it, 0, 0);
 #endif
     }    
     tcsetpgrp(0, getpid());
