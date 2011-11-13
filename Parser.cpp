@@ -28,7 +28,9 @@ std::string Parser::nextWord() {
 
 CommandLine* Parser::readCommandLine () {
     tcsetpgrp(0, getpid());
-    if (line.empty()) {
+    bool rewind = true;
+    while (line.empty() && rewind) {
+        rewind = false;
         index = 0;
 
         
@@ -42,6 +44,7 @@ CommandLine* Parser::readCommandLine () {
 //        sigprocmask(SIG_BLOCK, &mask, &orig_mask);
         
         if (std::cin.eof()) {
+            rewind = true;
             std::cin.clear();
         }
         std::getline(std::cin, line);
