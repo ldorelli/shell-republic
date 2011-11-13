@@ -54,9 +54,15 @@ int FgCommand::_run(const char * args[], Executor * executor) {
     std::list<Executor::Job> *lj = executor->getJobs();
     std::list<Executor::Job>::iterator itA, itB;
     unsigned jobid;
-    
+ 	int ret = 1;
+
     if (args[1] == 0) jobid = executor->getLastForeground();
-    else sscanf(args[1], "%%%d", &jobid);
+    else ret = sscanf(args[1], "%%%d", &jobid);
+
+	if(!ret){
+		printf("Argumentos invalidos. Esperado: fg <ID> | fg\n");
+		return 0;
+	}
     
     MyTypo myt (MyTypo::NORMAL, MyTypo::PURPLE);
     
@@ -86,9 +92,13 @@ int BgCommand::_run(const char * args[], Executor * executor) {
     std::list<Executor::Job> *lj = executor->getJobs();
     std::list<Executor::Job>::iterator itA, itB;
     unsigned jobid;
-    
+    int ret = 1;
     if (args[1] == 0) jobid = executor->getLastForeground();
-    else sscanf(args[1], "%%%d", &jobid);
+    else ret = sscanf(args[1], "%%%d", &jobid);
+	if(!ret){
+		printf("Argumentos invalidos. Esperado: bg | bg <ID>\n");
+		return 0;
+	}
     
     MyTypo myt (MyTypo::NORMAL, MyTypo::PURPLE);
     
@@ -111,10 +121,13 @@ int KillCommand::_run(const char * args[], Executor * executor) {
     std::list<Executor::Job> *lj = executor->getJobs();
     std::list<Executor::Job>::iterator itA, itB;
     unsigned jobid;
-    
+    int ret = 1;
     if (args[1] == 0) return 0;
-    else sscanf(args[1], "%%%d", &jobid);
-    
+    else ret = sscanf(args[1], "%%%d", &jobid);
+    if(!ret){
+		printf("Argumentos invalidos. Esperado: kill <ID>\n");
+		return 0;
+	}
     MyTypo myt (MyTypo::NORMAL, MyTypo::PURPLE);
     
     for (itA = lj->begin(), itB = lj->end(); itA!=itB; itA++) {
@@ -138,7 +151,7 @@ int EchoCommand::_run(const char *args[], Executor * executor) {
 	printf("\n");
 }
 
-bool EchoCommand::forkable(){ return false; }
+bool EchoCommand::forkable(){ return true; }
 
 //int PwdCommand
 

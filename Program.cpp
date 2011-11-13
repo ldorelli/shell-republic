@@ -58,9 +58,10 @@ int Program::run () {
             myt1 << "Shell" << myt1 << myt3 << "-" << myt3 << myt1 << "Republic" << myt1 << myt2 << "$ " << myt2;
         CommandLine *cl = parser.readCommandLine();
         executor.cleanUp();
-        if (cl)
+        if (cl){
             executor.run(cl, bCommands);
-        delete cl;
+	        delete cl;
+		}
     }
     return 0;
 }

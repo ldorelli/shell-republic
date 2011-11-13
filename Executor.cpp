@@ -64,7 +64,6 @@ int Executor::run(Command* command, int & firstPipedPid, bool isBackground, std:
 			
     }
     
-    /* mutex aqui */
     std::map<std::string, Builtin*>::iterator it = 
     bCommands.find(std::string(execvector[0]));
     
@@ -101,7 +100,9 @@ int Executor::run(Command* command, int & firstPipedPid, bool isBackground, std:
             }	
             
             if (it == bCommands.end()) {
-                if(execvp(execvector[0], (char*const*) execvector)==-1) exit(0);
+                if(execvp(execvector[0], (char*const*) execvector)==-1){
+					exit(0);
+				}
             }
             else
                 it->second->run(execvector, this);
@@ -121,7 +122,6 @@ int Executor::run(Command* command, int & firstPipedPid, bool isBackground, std:
                 job.pid << std::endl;
             }
             jobs.push_back(job);
-            /* up */
         }
         return pid;
     } else {

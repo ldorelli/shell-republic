@@ -61,9 +61,7 @@ CommandLine* Parser::readCommandLine () {
     while (true) {
         std::string word = nextWord();
         if (word == "|") {
-            
             commands->push_back(new Command(parameters, in, out, err, outAppend, errAppend));
-            
             parameters.clear();
             in.clear();
             out.clear();
@@ -71,7 +69,8 @@ CommandLine* Parser::readCommandLine () {
             errAppend = false;
             outAppend = false;
         } else if (word == "&") {
-            commands->push_back(new Command(parameters, in, out, err, outAppend, errAppend));
+           	if(parameters.empty()) 	return 0;
+		   	commands->push_back(new Command(parameters, in, out, err, outAppend, errAppend));
             if (index == line.size()) line.clear();
             return new CommandLine(commands, true);
         } else if (word == "&>") {
@@ -89,6 +88,10 @@ CommandLine* Parser::readCommandLine () {
         } else if (word == "<") {
             in = nextWord();
         } else if (word == "") {
+           	if(parameters.empty()){
+            	if (index == line.size()) line.clear();
+				return 0;
+			}
             commands->push_back(new Command(parameters, in, out, err, outAppend, errAppend));
             if (index == line.size()) line.clear();
             return new CommandLine(commands, false);
