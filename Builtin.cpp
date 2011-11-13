@@ -70,13 +70,13 @@ int FgCommand::_run(const char * args[], Executor * executor) {
         if (itA->jobid == jobid) {
             
             executor->setLastForeground(itA->jobid);
-            executor->setForeground(itA->groupid);
-            tcsetpgrp(0, itA->groupid);
-            kill(itA->groupid, SIGCONT);
+            executor->setForeground(itA->pid);
+            tcsetpgrp(0, itA->pid);
+            kill(itA->pid, SIGCONT);
 			executor->cleanUp();
 			int status;
             do{
-				waitpid(-itA->groupid, &status, WUNTRACED | WCONTINUED);
+				waitpid(itA->pid, &status, WUNTRACED | WCONTINUED);
 			}while(!WIFEXITED(status) && !WIFSIGNALED(status) && !WIFSTOPPED(status));
             executor->setForeground(getpid());
 			tcsetpgrp(0, getpid());
