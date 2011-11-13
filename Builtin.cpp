@@ -66,24 +66,25 @@ int FgCommand::_run(const char * args[], Executor * executor) {
     
     MyTypo myt (MyTypo::NORMAL, MyTypo::PURPLE);
     
+    std::list<int> wail;
+    int pgid = 0;
     for (itA = lj->begin(), itB = lj->end(); itA!=itB; itA++) {
         if (itA->jobid == jobid) {
-            
-            executor->setLastForeground(itA->jobid);
-            int pgid = getpgid(itA->pid);
-            tcsetpgrp(0, pgid);
-            kill(-pgid, SIGCONT);
-			int status;
-            waitpid(-pgid, 0, 0);
-//            do{
-//				waitpid(itA->pid, &status, WUNTRACED | WCONTINUED);
-//			}while(!WIFEXITED(status) && !WIFSIGNALED(status) && !WIFSTOPPED(status));
-//			tcsetpgrp(0, getpid());
-			executor->cleanUp();
-            break;
+            wail.push_back(itA->pid);
+            if (!pgid) { 
+                pgid = getpgid(itA->pid);
+                executor->setLastForeground(itA->jobid);
+            }
         }
     }
-    
+    kill(-pgid, SIGCONT);
+    tcsetpgrp(0, pgid);
+    std::list<int>::iterator it;
+    for (it = wail.begin(); it != wail.end(); it++) {
+        waitpid(*it, 0, 0);
+    }
+    tcsetpgrp(0, getpid());
+    executor->cleanUp();
     return 0;
 }
 
@@ -104,7 +105,7 @@ int BgCommand::_run(const char * args[], Executor * executor) {
     for (itA = lj->begin(), itB = lj->end(); itA!=itB; itA++) {
         if (itA->jobid == jobid) {
             executor->setLastForeground(itA->jobid);
-            kill(itA->pid, SIGCONT);
+            kill(-getpgid(itA->pid), SIGCONT);
             handlers::setDeathStatusTrue();
             std::cout << myt << '[' << itA->jobid << "] " <<
             myt << itA->pid << " (" << getpgid(itA->pid) << ")\t\t" <<
@@ -131,7 +132,7 @@ int KillCommand::_run(const char * args[], Executor * executor) {
     
     for (itA = lj->begin(), itB = lj->end(); itA!=itB; itA++) {
         if (itA->jobid == jobid) {
-            kill(itA->pid, SIGTERM);
+            kill(-getpgid(itA->pid), SIGTERM);
             handlers::setDeathStatusTrue();
             std::cout << myt << '[' << itA->jobid << "] " <<
             myt << itA->pid << " (" << getpgid(itA->pid) << ")\t\t" <<

@@ -28,7 +28,7 @@ std::string Parser::nextWord() {
 
 CommandLine* Parser::readCommandLine () {
     tcsetpgrp(0, getpid());
-    while (line.empty()) {
+    if (line.empty()) {
         index = 0;
 
         

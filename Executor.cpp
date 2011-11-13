@@ -22,7 +22,7 @@ int Executor::run(Command* command, int & firstPipedPid, bool isBackground, std:
     const char ** execvector = command->getExecv();
     Job job;
     if (!jobs.empty()) {
-        job.jobid = jobs.rbegin()->jobid + 1;
+            job.jobid = jobs.rbegin()->jobid + ((firstPipedPid)?0:1);
     } else job.jobid = 1;
     
     job.name = execvector[0];
