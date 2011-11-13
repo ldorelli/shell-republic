@@ -18,7 +18,7 @@ std::string Parser::nextWord() {
         if (specialChar) specialChar = false, word += ch;
         else if (insideComma && !simpleComma && ch == '"') insideComma = false;
         else if (insideComma && simpleComma && ch == '\'') insideComma = simpleComma = false;
-        else if (ch == '\\' && insideComma && !simpleComma) specialChar = true;
+        else if (ch == '\\' && !simpleComma) specialChar = true;
         else if (insideComma) word += ch;
         else if (ch == '"') insideComma = true;
         else if (ch == '\'') insideComma = simpleComma = true;
