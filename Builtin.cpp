@@ -83,9 +83,13 @@ int FgCommand::_run(const char * args[], Executor * executor) {
 	int status;
     std::list<int>::iterator it;
     for (it = wail.begin(); it != wail.end(); it++) {
+#ifdef __linux__
 		do{
 			waitpid(-pgid, &status, WUNTRACED | WCONTINUED);
 		}while( !WIFSTOPPED(status) && !WIFSIGNALED(status) && !WIFEXITED(status));
+#else
+        waitpid(*itA, 0, 0);
+#endif
     }    
     tcsetpgrp(0, getpid());
     executor->cleanUp();
