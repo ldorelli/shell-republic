@@ -99,4 +99,15 @@ class KillCommand : public Builtin {
     int _run(const char*[], Executor*);
 };
 
+/**
+ * \brief Class que implementa o comando echo.
+ *	
+ * 
+ * Sintaxe: echo <arg1> <arg2> ... <arg_n> 
+ */ 
+ class EchoCommand : public Builtin{
+	int _run(const char*[],Executor*);
+	bool forkable();
+ };
+
 #endif

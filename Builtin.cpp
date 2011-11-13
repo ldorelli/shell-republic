@@ -131,6 +131,15 @@ int KillCommand::_run(const char * args[], Executor * executor) {
     return 0;
 }
 
+int EchoCommand::_run(const char *args[], Executor * executor) {
+	int i = 1;
+	if(args[i]) printf("%s",args[i++]);
+	while(args[i]) printf(" %s",args[i++]);
+	printf("\n");
+}
+
+bool EchoCommand::forkable(){ return false; }
+
 //int PwdCommand
 
 bool JobsCommand::forkable() {return true; }

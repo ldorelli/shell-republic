@@ -43,7 +43,8 @@ int Program::run () {
     bCommands[std::string("bg")] = new BgCommand();
     bCommands[std::string("fg")] = new FgCommand();
     bCommands[std::string("kill")] = new KillCommand();
-    
+ 	bCommands[std::string("echo")] =  new EchoCommand();
+
     Parser parser;
     Executor executor;
     
