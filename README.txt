@@ -3,6 +3,10 @@
 GITHUB (READ-ONLY)
     git://github.com/ldorelli/shell-republic.git
 
+PARA COMPILAR:
+	sudo make 
+
+
 SSC0140 - Sistemas Operacionais II
           Instituto de Ciencias Matematicas e de Computacao - ICMC
           Universidade de Sao Paulo - USP
